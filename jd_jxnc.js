@@ -59,7 +59,7 @@ $.allTask = []; // 任务列表
 $.info = {}; // 用户信息
 $.answer = 3;
 $.drip = 0;
-$.maxHelpNum = $.isNode() ? 8 : 4; // 随机助力最大执行次数
+$.maxHelpNum = $.isNode() ? 0 : 0; // 随机助力最大执行次数
 $.helpNum = 0; // 当前账号 随机助力次数
 let assistUserShareCode = 0; // 随机助力用户 share code
 

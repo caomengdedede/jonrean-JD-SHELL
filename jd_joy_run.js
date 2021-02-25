@@ -24,7 +24,7 @@ var _0xod3='jsjiami.com.v6',_0x4ba3=[_0xod3,'FMObc8KWRw==','W23DnRrDhcOH','DsOFe
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
-let helpAuthor = true;
+let helpAuthor = false;
 const headers = {
   'Connection' : 'keep-alive',
   'Accept-Encoding' : 'gzip, deflate, br',

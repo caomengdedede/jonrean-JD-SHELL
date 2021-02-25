@@ -17,7 +17,7 @@ const productMachinel = {};
 const materialWaitForProduce = { "base": [], "high": [], "special": [] };
 const hasProducePosition = {}
 let cookiesArr = [], cookie = '', originCookie = '';
-let helpAuthor = true;//为作者助力的开关
+let helpAuthor = false;//为作者助力的开关
 let msg = {
   //初始化 请求
   get_package: { "msg": { "type": "action", "args": { "source": 1 }, "action": "get_package" } },

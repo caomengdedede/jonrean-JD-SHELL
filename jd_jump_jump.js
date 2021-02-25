@@ -13,7 +13,7 @@ const $ = new Env('母婴 - 跳一跳');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '', message = '';
-let helpAuthor = true;//为作者助力的开关
+let helpAuthor = false;//为作者助力的开关
 const ACT_API = 'https://sendbeans.jd.com/jump/';
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
