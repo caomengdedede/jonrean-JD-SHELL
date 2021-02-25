@@ -1,9 +1,9 @@
 # File: .github/workflows/repo-sync.yml
 name: 🔄自动同步🔄
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 */1 * * *'
-  workflow_dispatch:
   watch:
     types: started
   repository_dispatch:
