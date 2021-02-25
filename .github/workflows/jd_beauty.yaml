@@ -6,7 +6,7 @@ name: 京东美丽研究院
 on:
     workflow_dispatch:
     schedule:
-        - cron: "1 4,10,17 * * *"
+        - cron: "2 23,4,10 * * *"
     watch:
         types: [started]
     repository_dispatch:
@@ -47,4 +47,4 @@ jobs:
                   QYWX_AM: ${{ github.event.client_payload.QYWX_AM || secrets.QYWX_AM }}
                   PUSH_PLUS_TOKEN: ${{ github.event.client_payload.PUSH_PLUS_TOKEN || secrets.PUSH_PLUS_TOKEN }}
                   PUSH_PLUS_USER: ${{ github.event.client_payload.PUSH_PLUS_USER || secrets.PUSH_PLUS_USER }}
-                  SYNCURL: https://github.com/shuye73/MyActions/raw/main/jd_beauty.js
+                  SYNCURL: https://github.com/jackpater/MyActions/raw/main/jd_beauty.js

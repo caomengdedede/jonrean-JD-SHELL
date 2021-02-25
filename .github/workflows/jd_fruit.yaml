@@ -1,12 +1,12 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 京东农场
+name: 京东农场🍉
 
 on:
     workflow_dispatch:
     schedule:
-        - cron: "0 3,9,22 * * *"
+        - cron: "2 23,4,10 * * *"
     watch:
         types: [started]
     repository_dispatch:
@@ -25,7 +25,7 @@ jobs:
             - name: npm install
               run: |
                   npm install
-            - name: "运行 【京东农场】"
+            - name: "运行 【京东农场🍉】"
               run: |
                   node onlyOneExecute.js
               env:
@@ -49,5 +49,5 @@ jobs:
                   FRUIT_BEAN_CARD: ${{ github.event.client_payload.FRUIT_BEAN_CARD || secrets.FRUIT_BEAN_CARD }}
                   FRUIT_NOTIFY_CONTROL: ${{ github.event.client_payload.FRUIT_NOTIFY_CONTROL || secrets.FRUIT_NOTIFY_CONTROL }}
                   FRUITSHARECODES: ${{ github.event.client_payload.FruitShareCodes || secrets.FruitShareCodes }}
-                  SYNCURL: https://github.com/shuye73/MyActions/raw/main/jd_fruit.js
+                  SYNCURL: https://github.com/jackpater/MyActions/raw/main/jd_fruit.js
                   IGNORE_COOKIE_JDNC: ${{ github.event.client_payload.IGNORE_COOKIE_JDNC || secrets.IGNORE_COOKIE_JDNC }} #京东农场禁用某些cookie的执行,因为通知太烦了呀,比如要禁用第2和第四个的执行,则填入[2,4]即可,包含中括号哦

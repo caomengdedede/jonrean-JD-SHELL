@@ -1,9 +1,9 @@
-name: 京喜工厂
+name: 京喜工厂🏭
 
 on:
     workflow_dispatch:
     schedule:
-        - cron: "0 */1 * * *"
+        - cron: "0 0-22/4 * * "
     watch:
         types: [started]
     repository_dispatch:
@@ -23,7 +23,7 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行【京喜工厂】"
+            - name: "运行【京喜工厂🏭】"
               run: |
                   node onlyOneExecute.js
               env:
@@ -46,7 +46,7 @@ jobs:
                   PUSH_PLUS_USER: ${{ github.event.client_payload.PUSH_PLUS_USER || secrets.PUSH_PLUS_USER }}
                   DREAMFACTORY_NOTIFY_CONTROL: ${{ github.event.client_payload.DREAMFACTORY_NOTIFY_CONTROL || secrets.DREAMFACTORY_NOTIFY_CONTROL }}
                   DREAM_FACTORY_SHARE_CODES: ${{ github.event.client_payload.DREAM_FACTORY_SHARE_CODES || secrets.DREAM_FACTORY_SHARE_CODES }}
-                  SYNCURL: https://github.com/shuye73/MyActions/raw/main/jd_dreamFactory.js
+                  SYNCURL: https://github.com/jackpater/MyActions/raw/main/jd_dreamFactory.js
                   #专属配置
                   IGNORE_COOKIE_JXGC: ${{ github.event.client_payload.IGNORE_COOKIE_JXGC || secrets.IGNORE_COOKIE_JXGC }} #京喜工厂禁用某些cookie的执行,因为通知太烦了呀,比如要禁用第2和第四个的执行,则填入[2,4]即可,包含中括号哦
                   DREAMFACTORY_FORBID_ACCOUNT: ${{ github.event.client_payload.DREAMFACTORY_FORBID_ACCOUNT || secrets.DREAMFACTORY_FORBID_ACCOUNT }} #京喜工厂禁用某些cookie的执行,因为通知太烦了呀,比如要禁用第2和第四个的执行,则填入[2,4]即可,包含中括号哦

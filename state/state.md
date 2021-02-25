@@ -7,11 +7,11 @@
 ## 接下来说一下今天事件的始末吧
 首先是这样一段对话
 
-![image](https://github.com/shuye73/MyActions/raw/main/state/youtube.png)
+![image](https://github.com/jackpater/MyActions/raw/main/state/youtube.png)
 
 然后在我以为是一场闹剧的时候有人发给我了一张这样的图
 
-![image](https://github.com/shuye73/MyActions/raw/main/state/1.png)
+![image](https://github.com/jackpater/MyActions/raw/main/state/1.png)
 
 这个时候我发现原来确实是有CK的泄露，立即去改了相关的脚本，截止到我声明时脚本已经修复了
 
