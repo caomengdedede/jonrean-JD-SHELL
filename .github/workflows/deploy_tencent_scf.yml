@@ -106,16 +106,6 @@ jobs:
           if [ $PUSH_PLUS_USER ]; then sed -i "/variables/a\      PUSH_PLUS_USER: $PUSH_PLUS_USER" serverless.yml; fi;
           if [ $TG_PROXY_HOST ]; then sed -i "/variables/a\      TG_PROXY_HOST: $TG_PROXY_HOST" serverless.yml; fi;
           if [ $TG_PROXY_PORT ]; then sed -i "/variables/a\      TG_PROXY_PORT: $TG_PROXY_PORT" serverless.yml; fi;
-          if [ $FRUITSHARECODES ]; then sed -i "/variables/a\      FRUITSHARECODES: $FRUITSHARECODES" serverless.yml; fi;
-          if [ $PETSHARECODES ]; then sed -i "/variables/a\      PETSHARECODES: $PETSHARECODES" serverless.yml; fi;
-          if [ $PLANT_BEAN_SHARECODES ]; then sed -i "/variables/a\      PLANT_BEAN_SHARECODES: $PLANT_BEAN_SHARECODES" serverless.yml; fi;
-          if [ $SUPERMARKET_SHARECODES ]; then sed -i "/variables/a\      SUPERMARKET_SHARECODES: $SUPERMARKET_SHARECODES" serverless.yml; fi;
-          if [ $DDFACTORY_SHARECODES ]; then sed -i "/variables/a\      DDFACTORY_SHARECODES: $DDFACTORY_SHARECODES" serverless.yml; fi;
-          if [ $DREAM_FACTORY_SHARE_CODES ]; then sed -i "/variables/a\      DREAM_FACTORY_SHARE_CODES: $DREAM_FACTORY_SHARE_CODES" serverless.yml; fi;
-          if [ $JDZZ_SHARECODES ]; then sed -i "/variables/a\      JDZZ_SHARECODES: $JDZZ_SHARECODES" serverless.yml; fi;
-          if [ $JDJOY_SHARECODES ]; then sed -i "/variables/a\      JDJOY_SHARECODES: $JDJOY_SHARECODES" serverless.yml; fi;
-          if [ $BOOKSHOP_SHARECODES ]; then sed -i "/variables/a\      BOOKSHOP_SHARECODES: $BOOKSHOP_SHARECODES" serverless.yml; fi;
-          if [ $JD_CASH_SHARECODES ]; then sed -i "/variables/a\      JD_CASH_SHARECODES: $JD_CASH_SHARECODES" serverless.yml; fi;
           if [ $JXNC_SHARECODES ]; then sed -i "/variables/a\      JXNC_SHARECODES: $JXNC_SHARECODES" serverless.yml; fi;
           if [ $JDSGMH_SHARECODES ]; then sed -i "/variables/a\      JDSGMH_SHARECODES: $JDSGMH_SHARECODES" serverless.yml; fi;
           if [ $JDGLOBAL_SHARECODES ]; then sed -i "/variables/a\      JDGLOBAL_SHARECODES: $JDGLOBAL_SHARECODES" serverless.yml; fi;
