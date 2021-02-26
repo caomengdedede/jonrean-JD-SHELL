@@ -1011,7 +1011,7 @@ async function joinLeaderTuan() {
     }
   }
   $.tuanIdS = null;
-  if (!$.tuanIdS) await updateTuanIdsCDN('https://raw.githubusercontent.com/shuyeshuye/updateFactoryTuanId/master/jd_updateFactoryTuanId.json');
+  if (!$.tuanIdS) await updateTuanIdsCDN('https://raw.githubusercontent.com/jackpaterjackpater/updateFactoryTuanId/master/jd_updateFactoryTuanId.json');
   if ($.tuanIdS && $.tuanIdS.tuanIds) {
     for (let tuanId of $.tuanIdS.tuanIds) {
       if (!tuanId) continue
@@ -1180,7 +1180,7 @@ function updateTuanIds(url = 'https://gitee.com/Soundantony/updateFactoryTuanId/
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，将切换为备用API`)
           console.log(`随机取助力码放到您固定的互助码后面(不影响已有固定互助)`)
-          $.get({url: `https://raw.githubusercontent.com/shuyeshuye/updateFactoryTuanId/master/jd_updateFactoryTuanId.json`, 'timeout': 10000},(err, resp, data)=>{
+          $.get({url: `https://raw.githubusercontent.com/jackpaterjackpater/updateFactoryTuanId/master/jd_updateFactoryTuanId.json`, 'timeout': 10000},(err, resp, data)=>{
           $.tuanIdS = JSON.parse(data);})
         } else {
           $.tuanIdS = JSON.parse(data);
