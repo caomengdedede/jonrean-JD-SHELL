@@ -255,7 +255,7 @@ async function downloader_jd() {
             "京喜农场分享码"
         );
         await download(
-            "https://gitee.com/lxk0301/jd_scripts/raw/master/USER_AGENTS.js",
+            "https://github.com/shuye73/MyActions/raw/main/USER_AGENTS.js",
             "./USER_AGENTS.js",
             "USER_AGENTS"
         );
