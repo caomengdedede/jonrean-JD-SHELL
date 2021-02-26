@@ -1170,7 +1170,7 @@ function tuanAward(activeId, tuanId, isTuanLeader = true) {
     })
   })
 }
-function updateTuanIds(url = 'https://gitee.com/Soundantony/updateFactoryTuanId/raw/master/jd_updateFactoryTuanId.json') {
+function updateTuanIds(url = 'https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_updateFactoryTuanId.json') {
   return new Promise(resolve => {
     $.get({url,headers:{
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
@@ -1180,8 +1180,6 @@ function updateTuanIds(url = 'https://gitee.com/Soundantony/updateFactoryTuanId/
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，将切换为备用API`)
           console.log(`随机取助力码放到您固定的互助码后面(不影响已有固定互助)`)
-          $.get({url: `https://raw.githubusercontent.com/shuyeshuye/updateFactoryTuanId/master/jd_updateFactoryTuanId.json`, 'timeout': 10000},(err, resp, data)=>{
-          $.tuanIdS = JSON.parse(data);})
         } else {
           $.tuanIdS = JSON.parse(data);
         }
@@ -1290,7 +1288,7 @@ async function showMsg() {
 function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
-    $.get({url: "https://gitee.com/Soundantony/RandomShareCode/raw/master/JD_Dream_Factory.json",headers:{
+    $.get({url: "https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_updateFactoryTuanId.json",headers:{
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
       }}, async (err, resp, data) => {
       try {
@@ -1298,7 +1296,7 @@ function readShareCode() {
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，将切换为备用API`)
           console.log(`随机取助力码放到您固定的互助码后面(不影响已有固定互助)`)
-          $.get({url: `https://raw.githubusercontent.com/shuyeshuye/RandomShareCode/master/JD_Dream_Factory.json`, 'timeout': 10000},(err, resp, data)=>{
+          $.get({url: `https://raw.githubusercontent.com/shuyeshuye/updateTeam/master/shareCodes/jd_updateFactoryTuanId.json`, 'timeout': 10000},(err, resp, data)=>{
           data = JSON.parse(data);})
         } else {
           if (data) {
