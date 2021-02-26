@@ -15,11 +15,11 @@ const isRequest = typeof $request != "undefined"
 const $ = new Env('宠汪汪赛跑');
 const JD_BASE_API = `https://draw.jdfcloud.com//pet`;
 //下面给出好友邀请助力的示例填写规则
-let check_pins = ['巫仙山的扫地僧,mi-koo,白日梦38'];
-let invite_pins = ['巫仙山的扫地僧,mi-koo,白日梦38'];
+let check_pins = ['jd_598fe8dc4ddbb,109125727-334470,白日梦38'];
+let invite_pins = ['jd_598fe8dc4ddbb,109125727-334470,白日梦38'];
 //下面给出好友赛跑助力的示例填写规则
-let run_pins = ['巫仙山的扫地僧,mi-koo,白日梦38'];
-let friendsArr = ["巫仙山的扫地僧","mi-koo","白日梦38"]
+let run_pins = ['jd_598fe8dc4ddbb,109125727-334470,白日梦38'];
+let friendsArr = ["jd_598fe8dc4ddbb","109125727-334470","白日梦38"]
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
