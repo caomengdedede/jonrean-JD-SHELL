@@ -890,67 +890,6 @@ function getJdPet() {
     })
   })
 }
-async function getJdZZ() {
-  const JDZZ_API_HOST = 'https://api.m.jd.com/client.action'
-
-  function getUserInfo() {
-    return new Promise(resolve => {
-      $.get(taskZZUrl('interactIndex'), async (err, resp, data) => {
-        try {
-          if (err) {
-            console.log(`${JSON.stringify(err)}`)
-            console.log(`${$.name} API请求失败，请检查网路重试`)
-          } else {
-            if (safeGet(data)) {
-              data = JSON.parse(data)
-              if (data.data.shareTaskRes) {
-                console.log(
-                  `【账号${$.index}（${$.nickName || $.UserName}）京东赚赚】${
-                    data.data.shareTaskRes.itemId
-                  }`
-                )
-                let token = data.data.shareTaskRes.itemId
-                jdzz.push(token)
-              } else {
-                //console.log(`已满5人助力,暂时看不到您的京东赚赚好友助力码`)
-              }
-            }
-          }
-        } catch (e) {
-          $.logErr(e, resp)
-        } finally {
-          resolve(data)
-        }
-      })
-    })
-  }
-
-  function taskZZUrl(functionId, body = {}) {
-    return {
-      url: `${JDZZ_API_HOST}?functionId=${functionId}&body=${escape(
-        JSON.stringify(body)
-      )}&client=wh5&clientVersion=9.1.0`,
-      headers: {
-        Cookie: cookie,
-        Host: 'api.m.jd.com',
-        Connection: 'keep-alive',
-        'Content-Type': 'application/json',
-        Referer: 'http://wq.jd.com/wxapp/pages/hd-interaction/index/index',
-        'User-Agent': $.isNode()
-          ? process.env.JD_USER_AGENT
-            ? process.env.JD_USER_AGENT
-            : require('./USER_AGENTS').USER_AGENT
-          : $.getdata('JDUA')
-          ? $.getdata('JDUA')
-          : 'jdapp;iPhone;9.2.2;14.2;%E4%BA%AC%E4%B8%9C/9.2.2 CFNetwork/1206 Darwin/20.1.0',
-        'Accept-Language': 'zh-cn',
-        'Accept-Encoding': 'gzip, deflate, br',
-      },
-    }
-  }
-
-  await getUserInfo()
-}
 async function getPlantBean() {
   const JDplant_API_HOST = 'https://api.m.jd.com/client.action'
 
@@ -1167,366 +1106,19 @@ async function getJoy() {
     )
   })
 }
-// 年兽
-async function getJdNS() {
-  function getUserInfo(body = {}) {
-    return new Promise(resolve => {
-      $.post(
-        taskPostUrl('nian_getTaskDetail', body, 'nian_getTaskDetail'),
-        async (err, resp, data) => {
-          try {
-            if (err) {
-              console.log(`${JSON.stringify(err)}`)
-              console.log(`${$.name} API请求失败，请检查网路重试`)
-            } else {
-              if (safeGet(data)) {
-                data = JSON.parse(data)
-                if (data.data.bizCode === 0) {
-                  if (JSON.stringify(body) === '{}') {
-                    let token = data.data.result.inviteId
-                    console.log(
-                      `【账号${$.index}（${
-                        $.nickName || $.UserName
-                      }）京东年兽】${token}`
-                    )
-                    jdnian.push(token)
-                  }
-                }
-              }
-            }
-          } catch (e) {
-            $.logErr(e, resp)
-          } finally {
-            resolve(data)
-          }
-        }
-      )
-    })
-  }
 
-  await getUserInfo()
-}
-// 京东年货
-async function getJdNH() {
-  const ACT_ID = 'dzvm210168869301'
-  let shareUuid = 'd8e13cf24701413d8776a7d726309626'
-
-  function getIsvToken() {
-    let config = {
-      url: 'https://api.m.jd.com/client.action?functionId=genToken',
-      body:
-        'body=%7B%22to%22%3A%22https%3A%5C%2F%5C%2Flzdz-isv.isvjcloud.com%5C%2Fdingzhi%5C%2Fvm%5C%2Ftemplate%5C%2Factivity%5C%2F940531%3FactivityId%3Ddzvm210168869301%22%2C%22action%22%3A%22to%22%7D&build=167490&client=apple&clientVersion=9.3.2&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&sign=11c092269dfa11a21fec29b3a844c752&st=1610417332242&sv=112',
-      headers: {
-        Host: 'api.m.jd.com',
-        accept: '*/*',
-        'user-agent': 'JD4iPhone/167490 (iPhone; iOS 14.2; Scale/3.00)',
-        'accept-language':
-          'zh-Hans-JP;q=1, en-JP;q=0.9, zh-Hant-TW;q=0.8, ja-JP;q=0.7, en-US;q=0.6',
-        'content-type': 'application/x-www-form-urlencoded',
-        Cookie: cookie,
-      },
-    }
-    return new Promise(resolve => {
-      $.post(config, async (err, resp, data) => {
-        try {
-          if (err) {
-            console.log(`${err}`)
-            console.log(`${$.name} API请求失败，请检查网路重试`)
-          } else {
-            if (safeGet(data)) {
-              data = JSON.parse(data)
-              $.isvToken = data.tokenKey
-            }
-          }
-        } catch (e) {
-          $.logErr(e, resp)
-        } finally {
-          resolve(data)
-        }
-      })
-    })
-  }
-  function getIsvToken2() {
-    let config = {
-      url: 'https://api.m.jd.com/client.action?functionId=isvObfuscator',
-      body:
-        'body=%7B%22url%22%3A%22https%3A%5C%2F%5C%2Flzdz-isv.isvjcloud.com%22%2C%22id%22%3A%22%22%7D&build=167490&client=apple&clientVersion=9.3.2&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&sign=a65279303b19bf51c17e7dbfdea85dd3&st=1610417332632&sv=112',
-      headers: {
-        Host: 'api.m.jd.com',
-        accept: '*/*',
-        'user-agent': 'JD4iPhone/167490 (iPhone; iOS 14.2; Scale/3.00)',
-        'accept-language':
-          'zh-Hans-JP;q=1, en-JP;q=0.9, zh-Hant-TW;q=0.8, ja-JP;q=0.7, en-US;q=0.6',
-        'content-type': 'application/x-www-form-urlencoded',
-        Cookie: cookie,
-      },
-    }
-    return new Promise(resolve => {
-      $.post(config, async (err, resp, data) => {
-        try {
-          if (err) {
-            console.log(`${err}`)
-            console.log(`${$.name} API请求失败，请检查网路重试`)
-          } else {
-            if (safeGet(data)) {
-              data = JSON.parse(data)
-              $.token2 = data.token
-            }
-          }
-        } catch (e) {
-          $.logErr(e, resp)
-        } finally {
-          resolve(data)
-        }
-      })
-    })
-  }
-  // 获得游戏的Cookie
-  function getActCk() {
-    return new Promise(resolve => {
-      $.get(
-        taskUrl('dingzhi/vm/template/activity/940531', `activityId=${ACT_ID}`),
-        (err, resp, data) => {
-          try {
-            if (err) {
-              console.log(`${err}`)
-              console.log(`${$.name} API请求失败，请检查网路重试`)
-            } else {
-              cookie = `${cookie};`
-              if ($.isNode())
-                for (let ck of resp['headers']['set-cookie']) {
-                  cookie = `${cookie} ${ck.split(';')[0]};`
-                }
-              else {
-                for (let ck of resp['headers']['Set-Cookie'].split(',')) {
-                  cookie = `${cookie} ${ck.split(';')[0]};`
-                }
-              }
-            }
-          } catch (e) {
-            $.logErr(e, resp)
-          } finally {
-            resolve(data)
-          }
-        }
-      )
-    })
-  }
-  // 获得游戏信息
-  function getActInfo() {
-    return new Promise(resolve => {
-      $.post(
-        taskPostUrl('dz/common/getSimpleActInfoVo', `activityId=${ACT_ID}`),
-        async (err, resp, data) => {
-          try {
-            if (err) {
-              console.log(`${err}`)
-              console.log(`${$.name} API请求失败，请检查网路重试`)
-            } else {
-              if (safeGet(data)) {
-                data = JSON.parse(data)
-                if (data.result) {
-                  $.shopId = data.data.shopId
-                }
-              }
-            }
-          } catch (e) {
-            $.logErr(e, resp)
-          } finally {
-            resolve(data)
-          }
-        }
-      )
-    })
-  }
-
-  function taskUrl(function_id, body) {
-    return {
-      url: `https://lzdz-isv.isvjcloud.com/${function_id}?${body}`,
-      headers: {
-        Host: 'lzdz-isv.isvjcloud.com',
-        Accept: 'application/x.jd-school-island.v1+json',
-        Source: '02',
-        'Accept-Language': 'zh-cn',
-        'Content-Type': 'application/json;charset=utf-8',
-        Origin: 'https://lzdz-isv.isvjcloud.com',
-        'User-Agent': 'JD4iPhone/167490 (iPhone; iOS 14.2; Scale/3.00)',
-        Referer: `https://lzdz-isv.isvjcloud.com/dingzhi/book/develop/activity?activityId=${ACT_ID}`,
-        Cookie: `${cookie} IsvToken=${$.isvToken};`,
-      },
-    }
-  }
-  function taskPostUrl(function_id, body) {
-    return {
-      url: `https://lzdz-isv.isvjcloud.com/${function_id}`,
-      body: body,
-      headers: {
-        Host: 'lzdz-isv.isvjcloud.com',
-        Accept: 'application/json',
-        'Accept-Language': 'zh-cn',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Origin: 'https://lzdz-isv.isvjcloud.com',
-        'User-Agent': 'JD4iPhone/167490 (iPhone; iOS 14.2; Scale/3.00)',
-        Referer: `https://lzdz-isv.isvjcloud.com/dingzhi/book/develop/activity?activityId=${ACT_ID}`,
-        Cookie: `${cookie} isvToken=${$.isvToken};`,
-      },
-    }
-  }
-
-  function getActInfo() {
-    return new Promise(resolve => {
-      $.post(
-        taskPostUrl('dz/common/getSimpleActInfoVo', `activityId=${ACT_ID}`),
-        async (err, resp, data) => {
-          try {
-            if (err) {
-              console.log(`${err}`)
-              console.log(`${$.name} API请求失败，请检查网路重试`)
-            } else {
-              if (safeGet(data)) {
-                data = JSON.parse(data)
-                if (data.result) {
-                  $.shopId = data.data.shopId
-                }
-              }
-            }
-          } catch (e) {
-            $.logErr(e, resp)
-          } finally {
-            resolve(data)
-          }
-        }
-      )
-    })
-  }
-
-  function getMyPing() {
-    return new Promise(resolve => {
-      $.post(
-        taskPostUrl(
-          'customer/getMyPing',
-          `userId=${$.shopId}&token=${$.token2}&fromType=APP`
-        ),
-        async (err, resp, data) => {
-          try {
-            if (err) {
-              console.log(`${err}`)
-              console.log(`${$.name} API请求失败，请检查网路重试`)
-            } else {
-              if (safeGet(data)) {
-                data = JSON.parse(data)
-                if (data.result) {
-                  $.pin = data.data.secretPin
-                  cookie = `${cookie} AUTH_C_USER=${$.pin}`
-                }
-              }
-            }
-          } catch (e) {
-            $.logErr(e, resp)
-          } finally {
-            resolve(data)
-          }
-        }
-      )
-    })
-  }
-
-  function getUserInfo() {
-    return new Promise(resolve => {
-      let body = `pin=${encodeURIComponent($.pin)}`
-      $.post(
-        taskPostUrl('wxActionCommon/getUserInfo', body),
-        async (err, resp, data) => {
-          try {
-            if (err) {
-              console.log(`${err}`)
-              console.log(`${$.name} API请求失败，请检查网路重试`)
-            } else {
-              if (safeGet(data)) {
-                data = JSON.parse(data)
-                if (data.data) {
-                  $.userId = data.data.id
-                  $.pinImg = data.data.yunMidImageUrl
-                  $.nick = data.data.nickname
-                } else {
-                  console.log(data)
-                }
-              }
-            }
-          } catch (e) {
-            $.logErr(e, resp)
-          } finally {
-            resolve(data)
-          }
-        }
-      )
-    })
-  }
-
-  function getActContent(info = false, shareUuid = '') {
-    return new Promise(resolve => {
-      $.post(
-        taskPostUrl(
-          'dingzhi/vm/template/activityContent',
-          `activityId=${ACT_ID}&pin=${encodeURIComponent($.pin)}&pinImg=${
-            $.pinImg
-          }&nick=${$.nick}&cjyxPin=&cjhyPin=&shareUuid=${shareUuid}`
-        ),
-        async (err, resp, data) => {
-          try {
-            if (err) {
-              console.log(`${err}`)
-              console.log(`${$.name} API请求失败，请检查网路重试`)
-            } else {
-              if (safeGet(data)) {
-                data = JSON.parse(data)
-                if (data.data) {
-                  $.actorUuid = data.data.actorUuid
-
-                  if (!info) {
-                    console.log(`您的好友助力码为${$.actorUuid}`)
-                    let token = $.actorUuid
-                    console.log(
-                      `【账号${$.index}（${
-                        $.nickName || $.UserName
-                      }）京东年货节】${token}`
-                    )
-                    jdnh.push(token)
-                  }
-                }
-              }
-            }
-          } catch (e) {
-            $.logErr(e, resp)
-          } finally {
-            resolve(data)
-          }
-        }
-      )
-    })
-  }
-  await getIsvToken()
-  await getIsvToken2()
-  await getActCk()
-  await getActInfo()
-  await getMyPing()
-  await getUserInfo()
-  await getActContent(false, shareUuid)
-}
 // jd签到领现金
 async function getJDCase() {
-  const JDZZ_API_HOST = 'https://api.m.jd.com/client.action'
+  const JD_API_HOST = 'https://api.m.jd.com/client.action'
 
   function getUserInfo() {
     return new Promise(resolve => {
-      $.get(taskZZUrl('cash_mob_home'), async (err, resp, data) => {
+      $.get(taskUrl('cash_mob_home'), async (err, resp, data) => {
         try {
           if (err) {
             console.log(`${JSON.stringify(err)}`)
             console.log(`${$.name} API请求失败，请检查网路重试`)
           } else {
-            console.log('data')
-            console.log(data)
             if (safeGet(data)) {
               data = JSON.parse(data)
               if (data.code === 0 && data.data.result) {
@@ -1535,8 +1127,7 @@ async function getJDCase() {
                     $.nickName || $.UserName
                   }）京东签到领现金】${data.data.result.inviteCode}`
                 )
-                let token = data.data.result.inviteCode
-                jdcash.push(token)
+                jdcash.push(data.data.result.inviteCode)
               }
             }
           }
@@ -1549,11 +1140,11 @@ async function getJDCase() {
     })
   }
 
-  function taskZZUrl(functionId, body = {}) {
+  function taskUrl(functionId, body = {}) {
     return {
-      url: `${JDZZ_API_HOST}?functionId=${functionId}&body=${escape(
+      url: `${JD_API_HOST}?functionId=${functionId}&body=${escape(
         JSON.stringify(body)
-      )}&client=wh5&clientVersion=9.1.0`,
+      )}&appid=CashRewardMiniH5Env&appid=9.1.0`,
       headers: {
         Cookie: cookie,
         Host: 'api.m.jd.com',
@@ -1629,14 +1220,13 @@ let submit_farm_code = [] // 东东农场互助码
 let submit_pet_code = [] // 东东萌宠
 let submit_jxfactory_code = [] // 京喜工厂互助码
 let submit_ddfactory_code = [] // 东东工厂互助码
-let submit_zodiac_tempcode = [] // 年兽
+
 
 // Commit Code Bot
 let jdcash = [] // 京东 签到领现金
 let jdcrazyjoy = [] // crazy joy
-let jdnh = [] // JD年货
-let jdzz = [] // JD赚赚
-let jdnian = [] // JD炸年兽
+
+
 
 let jdSgmh = [] // 闪购盲盒
 
@@ -1677,11 +1267,9 @@ function showFormatMsg() {
   console.log(`/submit_activity_codes sgmh ${jdSgmh.join('&')}\n`)
 
   console.log(`\n提交机器人 @Commit Code Bot\n`)
-  //console.log(`/jdcash ${jdcash.join('&')}\n`)
+  console.log(`/jdcash ${jdcash.join('&')}\n`)
   console.log(`/jdcrazyjoy ${jdcrazyjoy.join('&')}\n`)
-  //console.log(`/jdnh ${jdnh.join('&')}\n`)
-  console.log(`/jdzz ${jdzz.join('&')}\n`)
-  //console.log(`/jdnian ${jdnian.join('&')}\n`)
+
 
   console.log(`\n========== 【格式化互助码==========`)
   formatShareCodes(submit_bean_code, '种豆得豆', 'MyBean', 'ForOtherBean')
@@ -1689,7 +1277,7 @@ function showFormatMsg() {
   formatShareCodes(submit_pet_code, '东东萌宠', 'MyPet', 'ForOtherPet')
   formatShareCodes(submit_jxfactory_code,'京喜工厂','MyDreamFactory','ForOtherDreamFactory')
   formatShareCodes(submit_ddfactory_code,'东东工厂','MyJdFactory','ForOtherJdFactory')
-  //formatShareCodes(jdcash, '签到领现金', 'MyCash', 'ForOtherCash')
+  formatShareCodes(jdcash, '签到领现金', 'MyCash', 'ForOtherCash')
   formatShareCodes(jdcrazyjoy, 'crazy joy', 'MyJoy', 'ForOtherJoy')
   formatShareCodes(jdSgmh, '闪购盲盒', 'MySgmh', 'ForOtherSgmh')
 }
@@ -1702,11 +1290,8 @@ async function getShareCodeAndAdd() {
   await getJdPet() // 东东萌宠
   await getPlantBean() // 种豆得豆
   await getJDFruit() // 京东农场
-  await getJdZZ() // 京东赚赚
   await getJoy() // CrazyJoy
-  //await getJdNS() // 年兽
-  //await getJdNH() // 京东年货
-  //await getJDCase() // 京东签到领现金
+  await getJDCase() // 京东签到领现金
   await getSgmh() // 闪购盲盒
   console.log(`======账号${$.index}结束======\n`)
 }
