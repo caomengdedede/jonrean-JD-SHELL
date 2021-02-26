@@ -105,7 +105,7 @@ function showMsg() {
 function getInfo() {
   return new Promise(resolve => {
     $.get({
-      url: 'https://anmp.jd.com/babelDiy/Zeus/2rjWmdgpwypWAQmLuW3CvJQtBjWL/index.html?wxAppName=jd',
+      url: 'https://anmp.jd.com/babelDiy/Zeus/3DSHPs2xC66RgcCEB8YVLsudqfh5/index.html?wxAppName=jd',
       headers: {
         Cookie: cookie
       }
