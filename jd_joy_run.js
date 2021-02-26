@@ -23,7 +23,6 @@ let friendsArr = ["jd_598fe8dc4ddbb","109125727-334470","白日梦38"]
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
-let helpAuthor = false;
 const headers = {
   'Connection' : 'keep-alive',
   'Accept-Encoding' : 'gzip, deflate, br',
