@@ -121,4 +121,5 @@
 0 0,8,12,16 * * * node /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
 # 京东会员抽京豆
 55 0,12 * * *  node /scripts/jd_plus_bean.js >> /scripts/logs/jd_plus_bean.log 2>&1
-
+# 京东疯狂的JOY挂机
+5 5 */2 * *  node /scripts/jd_crazy_joy_coin.js >> /scripts/logs/jd_crazy_joy_coin.log 2>&1
