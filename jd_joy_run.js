@@ -15,11 +15,11 @@ const isRequest = typeof $request != "undefined"
 const $ = new Env('宠汪汪赛跑');
 const JD_BASE_API = `https://draw.jdfcloud.com//pet`;
 //下面给出好友邀请助力的示例填写规则
-let check_pins = ['jd_6cd93e613b0e5,被折叠的记忆33,jd_704a2e5e28a66,jd_45a6b5953b15b,zooooo58,jd_66f5cecc1efcd,jd_41345a6f96aa5,jd_sIhNpDXJehOr,jd_mCbhXxmqzYJC,wddpzLSxORvLGo,jd_7bb2be8dbd65c,'];
-let invite_pins = ['104720238-540078,15905303986_p,丶呐喊丶丶,残雪秋影,jd_53c6a078fee20,jd_448b0c4918e92'];
+let check_pins = ['巫仙山的扫地僧,mi-koo,白日梦38'];
+let invite_pins = ['巫仙山的扫地僧,mi-koo,白日梦38'];
 //下面给出好友赛跑助力的示例填写规则
-let run_pins = ['104720238-540078,15905303986_p,丶呐喊丶丶,残雪秋影,jd_53c6a078fee20'];
-let friendsArr = ["104720238-540078","15905303986_p","丶呐喊丶丶","残雪秋影","jd_53c6a078fee20"]
+let run_pins = ['巫仙山的扫地僧,mi-koo,白日梦38'];
+let friendsArr = ["巫仙山的扫地僧","mi-koo","白日梦38"]
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
