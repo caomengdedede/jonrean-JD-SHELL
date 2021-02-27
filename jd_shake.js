@@ -11,7 +11,7 @@ const $ = new Env('超级摇一摇');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '';
-let helpAuthor = true;//为作者助力的开关
+let helpAuthor = false;//为作者助力的开关
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
         cookiesArr.push(jdCookieNode[item])
