@@ -14,17 +14,17 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '', originCookie = '', message = '';
 let helpAuthor = true;//为作者助力的开关
 var __encode ='jsjiami.com',_a={}, _0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68\x74\x74\x70\x3A\x2F\x2F\x77\x77\x77\x2E\x73\x6F\x6A\x73\x6F\x6E\x2E\x63\x6F\x6D\x2F\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x6F\x62\x66\x75\x73\x63\x61\x74\x6F\x72\x2E\x68\x74\x6D\x6C"];(function(_0xd642x1){_0xd642x1[_0xb483[0]]= _0xb483[1]})(_a);var __Oxb26e9=["\x53\x6F\x75\x6E\x64\x61\x6E\x74\x6F\x6E\x79","\x52\x61\x6E\x64\x6F\x6D\x53\x68\x61\x72\x65\x43\x6F\x64\x65","\x4A\x44\x5F\x46\x72\x65\x65\x33\x2E\x6A\x73\x6F\x6E","\x2F\x2F\x67\x69\x74\x65\x65\x2E\x63\x6F\x6D\x2F","\x2F","\x2F\x72\x61\x77\x2F\x6D\x61\x73\x74\x65\x72\x2F","","\x75\x6E\x64\x65\x66\x69\x6E\x65\x64","\x6C\x6F\x67","\u5220\u9664","\u7248\u672C\u53F7\uFF0C\x6A\x73\u4F1A\u5B9A","\u671F\u5F39\u7A97\uFF0C","\u8FD8\u8BF7\u652F\u6301\u6211\u4EEC\u7684\u5DE5\u4F5C","\x6A\x73\x6A\x69\x61","\x6D\x69\x2E\x63\x6F\x6D"];let shuye72=__Oxb26e9[0x0];let shuye73=__Oxb26e9[0x1];let shuye74=__Oxb26e9[0x2];let giteeurl=__Oxb26e9[0x3]+ shuye72+ __Oxb26e9[0x4]+ shuye73+ __Oxb26e9[0x5]+ shuye74+ __Oxb26e9[0x6];;;(function(_0x1ce9x5,_0x1ce9x6,_0x1ce9x7,_0x1ce9x8,_0x1ce9x9,_0x1ce9xa){_0x1ce9xa= __Oxb26e9[0x7];_0x1ce9x8= function(_0x1ce9xb){if( typeof alert!== _0x1ce9xa){alert(_0x1ce9xb)};if( typeof console!== _0x1ce9xa){console[__Oxb26e9[0x8]](_0x1ce9xb)}};_0x1ce9x7= function(_0x1ce9xc,_0x1ce9x5){return _0x1ce9xc+ _0x1ce9x5};_0x1ce9x9= _0x1ce9x7(__Oxb26e9[0x9],_0x1ce9x7(_0x1ce9x7(__Oxb26e9[0xa],__Oxb26e9[0xb]),__Oxb26e9[0xc]));try{_0x1ce9x5= __encode;if(!( typeof _0x1ce9x5!== _0x1ce9xa&& _0x1ce9x5=== _0x1ce9x7(__Oxb26e9[0xd],__Oxb26e9[0xe]))){_0x1ce9x8(_0x1ce9x9)}}catch(e){_0x1ce9x8(_0x1ce9x9)}})({})
-const ACT_ID = 'dz2102100001340203';
+const ACT_ID = 'dz2102100001340204';
 const questionList = [
-  { q: '84d9ef3ccb2543449935871c2a95f2aa', a: 'B:玲花' },
-  { q: '12ffa15a77c3489ca644ff0880e79343', a: 'A:倪萍' },
-  { q: '2c71328d97e6422a8181c6c025e078cc', a: 'A:管乐' },
-  { q: '3e7c6a1f59e043a59bcdca9b01b4cdaa', a: 'B:汪小敏' },
-  { q: '3f471e4309d7435c81604d0fe1d600b7', a: 'A:王智' },
-  { q: '482efac942f64d52852e92acdf9843df', a: 'B:孙楠' },
-  { q: '66e57d12ab4b4a018a3c2f6a5ebf68ba', a: 'A:曾毅' },
-  { q: 'ac6c845f83844995b8501665f06fe845', a: 'B:朱婧汐' },
-  { q: 'f3c17cb462de4841a0693abdee2b7815', a: 'A:黄艺馨' }
+  { q: '2ac2613ac0944d46a439859680c40c48', a: 'A:沈梦辰' },
+  { q: '3015c6e3d4374627bd639d3fb16df287', a: 'B:大张伟' },
+  { q: '4b9d9886eac24a3188c26f7d9594add5', a: 'A:虎虎' },
+  { q: '54d0563ce5424fb5b75c4a29581173c9', a: 'B:蔡国庆' },
+  { q: '76a8c0b2d46e4ec495fe74c556ba6bb7', a: 'A:黄艺馨' },
+  { q: '78c6a42baa374299bd9290771268ba80', a: 'C:任贤齐' },
+  { q: 'dfd7acb0efb54487984ecfc9edee0cee', a: 'A:陈浩民' },
+  { q: 'f67e2bfefae34709971e4fabd961b0f5', a: 'B:王祖蓝' },
+  { q: 'fcff5670e2214eb099924b9b9bc1d355', a: 'B:张海宇' }
 ]
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
