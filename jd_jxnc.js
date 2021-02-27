@@ -53,6 +53,7 @@ const openUrl = `openjd://virtual?params=${encodeURIComponent('{ "category": "ju
 let subTitle = '', message = '', option = {'open-url': openUrl}; // 消息副标题，消息正文，消息扩展参数
 const JXNC_API_HOST = 'https://wq.jd.com/';
 
+let allMessage = '';
 $.detail = []; // 今日明细列表
 $.helpTask = null;
 $.allTask = []; // 任务列表
@@ -98,6 +99,9 @@ let assistUserShareCode = 0; // 随机助力用户 share code
             await jdJXNC(); // 执行当前账号 主代码流程
         }
     }
+    if ($.isNode() && allMessage) {
+        await notify.sendNotify(`${$.name}`, `${allMessage}`)
+      }
 })()
     .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -646,7 +650,8 @@ async function showMsg() {
     if (notifyBool) {
         $.msg($.name, subTitle, message, option);
         if ($.isNode()) {
-            await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `${subTitle}\n${message}`);
+            // await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `${subTitle}\n${message}`);
+            allMessage += `${subTitle}\n${message}${$.index !== cookiesArr.length ? '\n\n' : ''}`
         }
     } else {
         $.log(`${$.name} - notify 通知已关闭\n账号${$.index} - ${$.nickName}\n${subTitle}\n${message}`);
