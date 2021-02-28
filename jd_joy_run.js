@@ -20,6 +20,7 @@ let invite_pins = ['104720238-540078,15905303986_p,丶呐喊丶丶,残雪秋影,
 //下面给出好友赛跑助力的示例填写规则
 let run_pins = ['104720238-540078,15905303986_p,丶呐喊丶丶,残雪秋影,jd_53c6a078fee20'];
 let friendsArr = ["104720238-540078","15905303986_p","丶呐喊丶丶","残雪秋影","jd_53c6a078fee20"]
+let helpAuthor = true;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
