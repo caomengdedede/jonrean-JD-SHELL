@@ -18,6 +18,7 @@
 30 10 * * * https://raw.githubusercontent.com/ZCY01/daily_scripts/main/jd/jd_try.js, tag=京东试用, img-url=https://raw.githubusercontent.com/ZCY01/img/master/jdtryv1.png, enabled=true
  */
 const $ = new Env('京东试用')
+let allMessage = '';
 let cookiesArr = [],
 	cookie = '',
 	jdNotify = false,
@@ -80,7 +81,7 @@ const typeMap = {
 					"open-url": "https://bean.m.jd.com/bean/signIndex.action"
 				});
 
-				if ($.isNode()) {
+				if ($.isNode()&& allMessage) {
 					await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
 				}
 				continue
