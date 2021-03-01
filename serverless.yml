@@ -58,12 +58,6 @@ inputs:
           cronExpression: "0 0 0 * * * *"
           enable: true
           argument: jx_cfdtx
-    - timer: #华硕爱奇艺领京豆
-        parameters:
-          name: jd_asus_iqiyi
-          cronExpression: "0 0 0 22-28 2 * *"
-          enable: true
-          argument: jd_asus_iqiyi
     - timer: #京东国际盲盒
         parameters:
           name: jd_global_mh
