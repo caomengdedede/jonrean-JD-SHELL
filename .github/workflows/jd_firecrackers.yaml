@@ -26,7 +26,7 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行【超级摇一摇】"
+            - name: "运行【她的节享京豆】"
               run: |
                   node onlyOneExecute.js
               env:
