@@ -1,4 +1,4 @@
-name: Delete old workflow runs
+name: 自动删除旧的运行日志（超过三天）
 on:
   schedule:
     - cron: '0 0 * * *'
