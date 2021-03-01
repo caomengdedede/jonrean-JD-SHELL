@@ -32,8 +32,8 @@ QYWX_APP = ''                                                             # 企�
 notify_mode = []
 
 # GitHub action运行需要填写对应的secrets
-if "BARK" in os.environ and os.environ["BARK"]:
-    BARK = os.environ["BARK"]
+if "BARK" in os.environ and os.environ["BARK_PUSH"]:
+    BARK = os.environ["BARK_PUSH"]
 if "SCKEY" in os.environ and os.environ["SCKEY"]:
     SCKEY = os.environ["SCKEY"]
 if "TG_BOT_TOKEN" in os.environ and os.environ["TG_BOT_TOKEN"] and "TG_USER_ID" in os.environ and os.environ["TG_USER_ID"]:
