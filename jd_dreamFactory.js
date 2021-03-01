@@ -64,13 +64,21 @@ if ($.isNode()) {
   }
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
-      console.log(`${$.UserName}去参加第一个cookie账号开的团`)
+
       cookie = cookiesArr[i];
-      if ($.tuanIds.length > 0) {
-        await JoinTuan($.tuanIds[0]);
+      $.isLogin = true;
+      await TotalBean();
+      if (!$.isLogin) {
+        continue
       }
+      console.log(`\n参加作者的团\n`);
       await joinLeaderTuan();//参团
+      $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
+      console.log(`\n账号内部相互进团\n`);
+      for (let item of $.tuanIds) {
+        console.log(`${$.UserName} 去参加团 ${item}\n`);
+        await JoinTuan(item);
+      }
     }
   }
   if ($.isNode() && allMessage) {
@@ -88,7 +96,7 @@ async function jdDreamFactory() {
   try {
     await userInfo();
     await QueryFriendList();//查询今日招工情况以及剩余助力次数
-    await joinLeaderTuan();//参团
+    // await joinLeaderTuan();//参团
     await helpFriends();
     if (!$.unActive) return
     await getUserElectricity();
@@ -1024,6 +1032,8 @@ function CreateTuan() {
   })
 }
 async function joinLeaderTuan() {
+  $.tuanIdS = null;
+  if (!$.tuanIdS) await updateTuanIdsCDN('https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_updateFactoryTuanId.json');
   if ($.tuanIdS && $.tuanIdS.tuanIds) {
     for (let tuanId of $.tuanIdS.tuanIds) {
       if (!tuanId) continue
