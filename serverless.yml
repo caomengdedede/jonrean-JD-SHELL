@@ -16,12 +16,12 @@ inputs:
   memorySize: 128 # 内存大小，单位MB
   timeout: 900 # 超时时间，单位秒
   events: # 触发器
-    - timer: #极速版红包
+    - timer: #极速版红包 #财富岛提现
         parameters:
-          name: jd_speed_redpocke
+          name: jd_speed_redpocke_jx_cfdtx
           cronExpression: "0 0 0 * * * *"
           enable: true
-          argument: jd_speed_redpocke
+          argument: jd_speed_redpocke&jx_cfdtx
     - timer: #东东超市兑换奖品 #摇京豆 #京东汽车兑换
         parameters:
           name: blueCoin_clublottery_carexchange
@@ -52,12 +52,6 @@ inputs:
           cronExpression: "0 2 0 * * * *"
           enable: true
           argument: jd_redPacket&jd_shop
-    - timer: #财富岛提现
-        parameters:
-          name: jx_cfdtx
-          cronExpression: "0 0 0 * * * *"
-          enable: true
-          argument: jx_cfdtx
     - timer: #京东国际盲盒
         parameters:
           name: jd_global_mh
@@ -76,6 +70,12 @@ inputs:
           cronExpression: "0 8,21 1-8/1 3 *"
           enable: true
           argument: jd_firecrackers
+    - timer: #财富岛
+        parameters:
+          name: jx_cfd
+          cronExpression: "30 8,13,19 * * **"
+          enable: true
+          argument: jx_cfd
   environment: #  环境变量
     variables: #  环境变量对象
       AAA: BBB # 不要删除，用来格式化对齐追加的变量的
