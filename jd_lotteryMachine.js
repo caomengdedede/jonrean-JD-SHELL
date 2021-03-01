@@ -2,7 +2,7 @@
 京东抽奖机
 更新时间：2021-02-18 21:59
 脚本说明：抽奖活动,有新活动可以@我或者提Issues
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 // quantumultx
 [task_local]
 #京东抽奖机

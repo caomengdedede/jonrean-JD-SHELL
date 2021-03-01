@@ -2,7 +2,7 @@
 京东健康
 京东健康APP集汪汪卡瓜分百万红包
 已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 ============Quantumultx===============
 [task_local]
 #京东健康

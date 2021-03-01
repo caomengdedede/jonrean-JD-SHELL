@@ -10,7 +10,7 @@
 活动时间：长期活动
 更新地址：https://gitee.com/lxk0301/jd_scripts/raw/master/jd_ms.js
 活动入口：京东app-京东秒杀-签到领红包
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 ============Quantumultx===============
 [task_local]
 #京东秒秒币

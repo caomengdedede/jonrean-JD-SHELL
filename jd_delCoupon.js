@@ -2,7 +2,7 @@
 京东删除优惠券
 更新时间：2021-02-22 11:46
 脚本说明：误删除的去电脑端恢复
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 // quantumultx
 [task_local]
 #京东删除优惠券

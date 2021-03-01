@@ -13,7 +13,7 @@
  能做完所有的任务，包括自动抽奖,脚本会给内置的shareId助力
  一共23个活动，耗时比较久，surge请加大timeout时间
  支持京东双账号
- 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+ 脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
  // quantumultx
  [task_local]
  #京东星推官

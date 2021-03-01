@@ -15,7 +15,7 @@
 领3张券功能,邀请好友未实现
 
 支持京东双账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 ================QuantumultX==================
 [task_local]
 #京东全民开红包
