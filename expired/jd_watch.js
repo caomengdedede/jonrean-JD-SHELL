@@ -2,7 +2,7 @@
 发现-看一看
 活动结束时间未知
 已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 脚本已内置需要抓的各40个包，但还建议自行抓包使用。
 使用 Charles 抓包，使用正则表达式：functionId=disc(AcceptTask|DoTask) 过滤请求
 选中所有请求，将所有请求保存为 JSON Session File 名称为 watch.chlsj，将该文件与jd_watch.js放在相同目录中

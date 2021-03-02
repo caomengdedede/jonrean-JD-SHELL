@@ -11,6 +11,8 @@
 0 9,12,20,21 * * * node /scripts/jd_global_mh.js >> /scripts/logs/jd_global_mh.log 2>&1
 # 她的节享京豆
 10 8,21 1-8/1 3 * node /scripts/jd_firecrackers.js >> /scripts/logs/jd_firecrackers.log 2>&1
+# 母婴跳一跳
+10 8,21 1-8/1 3 * node /scripts/jd_jump_jump.js >> /scripts/logs/jd_jump_jump.log 2>&1
 
 ##############长期活动##############
 # 签到
@@ -111,8 +113,6 @@
 22 0,12,18 * * *  node /scripts/jd_lotteryMachine.js >> /scripts/logs/jd_lotteryMachine.log 2>&1
 # 宠汪汪兑换
 0 0,8,12,16 * * * node /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
-# 京东会员抽京豆
-55 0,12 * * *  node /scripts/jd_plus_bean.js >> /scripts/logs/jd_plus_bean.log 2>&1
 # 京东疯狂的JOY挂机
 5 5 */2 * *  node /scripts/jd_crazy_joy_coin.js >> /scripts/logs/jd_crazy_joy_coin.log 2>&1
 # 京东摇一摇

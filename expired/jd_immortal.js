@@ -9,7 +9,7 @@ boxjs IMMORTAL_LATLON
 活动入口：京东APP我的-神仙书院
 地址：https://h5.m.jd.com//babelDiy//Zeus//4XjemYYyPScjmGyjej78M6nsjZvj//index.html?babelChannel=ttt9
 已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 ============Quantumultx===============
 [task_local]
 #京东神仙书院

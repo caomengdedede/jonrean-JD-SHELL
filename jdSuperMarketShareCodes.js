@@ -9,7 +9,7 @@
 Some Functions Modified From https://github.com/Zero-S1/JD_tools/blob/master/JD_superMarket.py
 支持京东双账号
 京小超兑换奖品请使用此脚本 https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_blueCoin.js
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 // QuantumultX
 [task_local]
 #东东超市

@@ -4,7 +4,7 @@
 活动地址：https://linggame.jd.com/babelDiy/Zeus/3Y7JfoyA2Nwoa4FRqgDY4WpVjfgP/index.html
 一天700积分，两天1400积分换35京豆，一共8天，可换140京豆，差不多一期种豆得豆
 已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 ============Quantumultx===============
 [task_local]
 #她的节享京豆

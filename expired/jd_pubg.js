@@ -4,7 +4,7 @@ PUBG ,运行时间会比较久,Surge请加大timeout时间
 活动于2020-12-13日结束
 活动地址：https://starsingle.m.jd.com/static/index.html#/?fromChangeSkinNum=PUBG
 已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 ============Quantumultx===============
 [task_local]
 #PUBG

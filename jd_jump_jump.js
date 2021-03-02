@@ -2,12 +2,21 @@
 母婴-跳一跳
 活动入口: 首页-母婴馆-跳一跳
 没有添加助力环节，本期活动合计京豆50W;
+新手写脚本，难免有bug，能用且用。
 
-jd_jump_jump by i-chenzhe
 已支持IOS双京东账号,Node.js支持N个京东账号
-
-脚本内置了一个给作者任务助力的网络请求，默认开启，如介意请自行关闭。
-参数 helpAuthor = false
+脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+============Quantumultx===============
+[task_local]
+#母婴-跳一跳
+5 8,14,20 2-7 3 * https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_jump-jump.js, tag=母婴-跳一跳, enabled=true
+================Loon==============
+[Script]
+cron "5 8,14,20 2-7 3 *" script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_jump-jump.js,tag=母婴-跳一跳
+===============Surge=================
+母婴-跳一跳 = type=cron,cronexp="5 8,14,20 2-7 3 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_jump-jump.js
+============小火箭=========
+母婴-跳一跳 = type=cron,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_jump-jump.js, cronexpr="5 8,14,20 2-7 3 *", timeout=3600, enable=true
 */
 const $ = new Env('母婴 - 跳一跳');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';

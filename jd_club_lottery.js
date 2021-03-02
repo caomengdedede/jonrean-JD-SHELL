@@ -9,7 +9,7 @@
 更新时间:2020-10-12
 Modified from https://github.com/Zero-S1/JD_tools/blob/master/JD_vvipclub.py
 已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+脚本兼容:QuantumultX,Surge,Loon,JSBox,Node.js
 ============QuantumultX==============
 [task_local]
 #摇京豆
