@@ -11,6 +11,8 @@
 0 9,12,20,21 * * * node /scripts/jd_global_mh.js >> /scripts/logs/jd_global_mh.log 2>&1
 # 她的节享京豆
 10 8,21 1-8/1 3 * node /scripts/jd_firecrackers.js >> /scripts/logs/jd_firecrackers.log 2>&1
+# 母婴跳一跳
+10 8,21 1-8/1 3 * node /scripts/jd_jump_jump.js >> /scripts/logs/jd_jump_jump.log 2>&1
 
 ##############长期活动##############
 # 签到
