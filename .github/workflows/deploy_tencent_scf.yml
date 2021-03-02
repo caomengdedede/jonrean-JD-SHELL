@@ -23,6 +23,7 @@ jobs:
       TG_PROXY_PORT: ${{ secrets.TG_PROXY_PORT}}
       PLANT_BEAN_SHARECODES: ${{ secrets.PLANT_BEAN_SHARECODES}}
       JD_BEAN_STOP: ${{ secrets.JD_BEAN_STOP}}
+      JDCFD_SHARECODES: ${{ secrets.JDCFD_SHARECODES }}
       JD_BEAN_SIGN_STOP_NOTIFY: ${{ secrets.JD_BEAN_SIGN_STOP_NOTIFY}}
       JD_BEAN_SIGN_NOTIFY_SIMPLE: ${{ secrets.JD_BEAN_SIGN_NOTIFY_SIMPLE}}
       PET_NOTIFY_CONTROL: ${{ secrets.PET_NOTIFY_CONTROL}}
@@ -86,6 +87,7 @@ jobs:
           if [ $TG_PROXY_HOST ]; then sed -i "/variables/a\      TG_PROXY_HOST: $TG_PROXY_HOST" serverless.yml; fi;
           if [ $TG_PROXY_PORT ]; then sed -i "/variables/a\      TG_PROXY_PORT: $TG_PROXY_PORT" serverless.yml; fi;
           if [ $JXNC_SHARECODES ]; then sed -i "/variables/a\      JXNC_SHARECODES: $JXNC_SHARECODES" serverless.yml; fi;
+          if [ $JDCFD_SHARECODES ]; then sed -i "/variables/a\      JDCFD_SHARECODES: $JDCFD_SHARECODES" serverless.yml; fi;
           if [ $PLANT_BEAN_SHARECODES ]; then sed -i "/variables/a\      PLANT_BEAN_SHARECODES: $PLANT_BEAN_SHARECODES" serverless.yml; fi;
           if [ $JDSGMH_SHARECODES ]; then sed -i "/variables/a\      JDSGMH_SHARECODES: $JDSGMH_SHARECODES" serverless.yml; fi;
           if [ $JD_BEAN_STOP ]; then sed -i "/variables/a\      JD_BEAN_STOP: $JD_BEAN_STOP" serverless.yml; fi;
