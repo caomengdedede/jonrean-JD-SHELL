@@ -19,7 +19,7 @@ inputs:
     - timer: #财富岛提现#极速版红包
         parameters:
           name: jx_cfdtx_jd_speed_redpocke
-          cronExpression: "57 59 23 * * * *"
+          cronExpression: "58 59 23 * * * *"
           enable: true
           argument: jx_cfdtx&jd_speed_redpocke
     - timer: #东东超市兑换奖品 #摇京豆 #京东汽车兑换
