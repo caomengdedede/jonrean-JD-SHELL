@@ -75,103 +75,30 @@ let shareCodes = [ // IOS本地脚本用户这个列表填入你要助力的好�
       $.done();
     })
 async function jdSuperMarket() {
-  Geturll()
-  await receiveGoldCoin();//收金币
-  await businessCircleActivity();//商圈活动
-  await receiveBlueCoin();//收蓝币（小费）
-  // await receiveLimitProductBlueCoin();//收限时商品的蓝币
-  await daySign();//每日签到
-  await BeanSign()//
-  await doDailyTask();//做日常任务，分享，关注店铺，
-  // await help();//商圈助力
-  //await smtgQueryPkTask();//做商品PK任务
-  await drawLottery();//抽奖功能(招财进宝)
-  // await myProductList();//货架
-  // await upgrade();//升级货架和商品
-  // await manageProduct();
-  // await limitTimeProduct();
-  await smtg_shopIndex();
-  await smtgHome();
-  await receiveUserUpgradeBlue();
-  await Home();
+  try {
+    await receiveGoldCoin();//收金币
+    await businessCircleActivity();//商圈活动
+    await receiveBlueCoin();//收蓝币（小费）
+    // await receiveLimitProductBlueCoin();//收限时商品的蓝币
+    await daySign();//每日签到
+    await BeanSign()//
+    await doDailyTask();//做日常任务，分享，关注店铺，
+    // await help();//商圈助力
+    //await smtgQueryPkTask();//做商品PK任务
+    await drawLottery();//抽奖功能(招财进宝)
+    // await myProductList();//货架
+    // await upgrade();//升级货架和商品
+    // await manageProduct();
+    // await limitTimeProduct();
+    await smtg_shopIndex();
+    await smtgHome();
+    await receiveUserUpgradeBlue();
+    await Home();
+  } catch (e) {
+    $.logErr(e)
+  }
 }
-function Geturll(){
-  shuye72()
-  function help(item) {
-      //console.log(item)
-      console.log(cookie)
-      let activityId = item.activityId
-      let shopId = item.shopId
-      let opt = {
-          url: `https://api.m.jd.com/client.action`,
-          headers: {
-              'Host': 'api.m.jd.com',
-              'Content-Type': 'application/x-www-form-urlencoded',
-              'Origin': 'https://h5.m.jd.com',
-              'Accept-Encoding': 'gzip, deflate, br',
-              'Cookie': cookie,
-              'Connection': 'keep-alive',
-              'Accept': 'application/json, text/plain, */*',
-              'user-agent': $.isNode() ? (process.env.JS_USER_AGENT ? process.env.JS_USER_AGENT : (require('./JS_USER_AGENTS').USER_AGENT)) : ($.getdata('JSUA') ? $.getdata('JSUA') : "'jdltapp;iPad;3.1.0;14.4;network/wifi;Mozilla/5.0 (iPad; CPU OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
-              'Referer': `https://h5.m.jd.com/babelDiy/Zeus/4ZK4ZpvoSreRB92RRo8bpJAQNoTq/index.html?serveId=wxe30973feca923229&actId=${activityId}&way=0&lng=&lat=&sid=&un_area=`,
-              'Accept-Language': 'zh-cn',
-          },
-          body: `functionId=cutPriceByUser&body={"activityId":"${activityId}","userName":"","followShop":1,"shopId":${shopId},"userPic":""}&client=wh5&clientVersion=1.0.0`
-      };
-      
-          $.post(opt, (err, ersp, data) => {//console.log(data)
-          });
-    
-    }
-     function shuye72() {
-      new Promise(resolve => {
-          $.get({
-              url: "https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_barGain.json",
-              headers: {
-                  "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
-              }
-          }, async (err, resp, data) => {
-                  if (data) {
-                      $.dataGet = JSON.parse(data);
-                      //console.log(data)
-                      //console.log('测试')
-                      if ($.dataGet.length !== 0) {
-                          for (let t = 0; t < $.dataGet.inBargaining.length; t++) {
-                              //console.log(t)
-                            let item = $.dataGet.inBargaining[t]
-                              await $.wait(700)
-                              help(item)
-                          }
-                          shuye73()
-                      }
-                  }
-          })
-      })
-     }
-     function shuye73() {
-      new Promise(resolve => {
-          $.get({
-              url: "https://gitee.com/Soundantony/RandomShareCode/raw/master/JD_Free.json",
-              headers: {
-                  "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
-              }
-          }, async (err, resp, data) => {
-                  if (data) {
-                      $.dataGet = JSON.parse(data);
-                      //console.log(data)
-                      //console.log('测试')
-                      if ($.dataGet.length !== 0) {
-                          for (let t = 0; t < $.dataGet.inBargaining.length; t++) {
-                              let item = $.dataGet.inBargaining[t]
-                              await $.wait(700)
-                              help(item)
-                          }
-                      }
-                  }
-          })
-      })
-     }
-}
+
 function showMsg() {
   $.log(`【京东账号${$.index}】${$.nickName}\n${message}`);
   jdNotify = $.getdata('jdSuperMarketNotify') ? $.getdata('jdSuperMarketNotify') : jdNotify;
@@ -385,16 +312,17 @@ async function businessCircleActivity() {
 
     if (joinStatus === 0) {
       if (joinPkTeam === 'true') {
-        await getTeam();
         console.log(`\n注：PK会在每天的七点自动随机加入LXK9301创建的队伍\n`)
         await updatePkActivityIdCDN('https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_updateTeam.json');
-        console.log(`\nupdatePkActivityId[pkActivityId]:::${$.updatePkActivityIdRes.pkActivityId}`);
+        console.log(`\nupdatePkActivityId[pkActivityId]:::${$.updatePkActivityIdRes && $.updatePkActivityIdRes.pkActivityId}`);
         console.log(`\n京东服务器返回的[pkActivityId] ${pkActivityId}`);
         if ($.updatePkActivityIdRes && ($.updatePkActivityIdRes.pkActivityId === pkActivityId)) {
+          await getTeam();
           let Teams = []
           Teams = $.updatePkActivityIdRes['Teams'] || Teams;
-          Teams = [...Teams, ...$.getTeams.filter(item => item['pkActivityId'] === `${pkActivityId}`)];
-          const randomNum = randomNumber(0, Teams.length);
+          if ($.getTeams && $.getTeams.length) {
+            Teams = [...Teams, ...$.getTeams.filter(item => item['pkActivityId'] === `${pkActivityId}`)];
+          }          const randomNum = randomNumber(0, Teams.length);
 
           const res = await smtg_joinPkTeam(Teams[randomNum] && Teams[randomNum].teamId, Teams[randomNum] && Teams[randomNum].inviteCode, pkActivityId);
           if (res && res.data.bizCode === 0) {
@@ -1631,14 +1559,22 @@ function TotalBean() {
 function getTeam() {
   return new Promise(async resolve => {
     $.getTeams = [];
+<<<<<<< HEAD
     $.get({url: `https://raw.githubusercontent.com/jackpater/updateSupermarketTeam/master/jd_updateTeam.json`, timeout: 100000}, (err, resp, data) => {
+=======
+    $.get({url: "https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_updateTeam.json",
+           headers: {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
+    }
+}, async (err, resp, data) => {
+>>>>>>> 移除过期活动
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API请求失败，请检查网路重试`)
+          console.log(`${$.name} supermarket/read/ API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data);
-          $.getTeams = data['data'];
+          $.getTeams = data && data['data'];
         }
       } catch (e) {
         $.logErr(e, resp)
