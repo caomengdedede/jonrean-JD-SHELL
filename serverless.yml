@@ -22,12 +22,12 @@ inputs:
           cronExpression: "58 59 23 * * * *"
           enable: true
           argument: jx_cfdtx&jd_speed_redpocke
-    - timer: #东东超市兑换奖品 #摇京豆 #京东汽车兑换 #京东全民开红包 #进店领豆
+    - timer: #东东超市兑换奖品 #摇京豆 #京东汽车兑换
         parameters:
-          name: blueCoin_clublottery_carexchange_ redPacket_shop
+          name: blueCoin_clublottery_carexchange
           cronExpression: "0 0 0 * * * *"
           enable: true
-          argument: jd_blueCoin&jd_club_lottery&jd_car_exchange&jd_redPacket&jd_shop
+          argument: jd_blueCoin&jd_club_lottery&jd_car_exchange
     - timer: #宠汪汪积分兑换京豆#签到领现金 #东东小窝
         parameters:
           name: joyreward_joysteal_cash_smallhome
@@ -58,12 +58,12 @@ inputs:
           cronExpression: "0 0 9,12,20,21 * * * *"
           enable: true
           argument: jd_global_mh
-    - timer: #京东种豆得豆
+    - timer: #京东直播
         parameters:
-          name: jd_plantBean
-          cronExpression: "0 3 */1 * * * *"
+          name: jd_live
+          cronExpression: "10-20/5 12 * * *"
           enable: true
-          argument: jd_plantBean
+          argument: jd_live
     - timer: #她的节，享京豆
         parameters:
           name: jd_firecrackers
