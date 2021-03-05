@@ -58,12 +58,12 @@ inputs:
           cronExpression: "0 0 9,12,20,21 * * * *"
           enable: true
           argument: jd_global_mh
-    - timer: #京东直播
+    - timer: #京东种豆得豆
         parameters:
-          name: jd_live
-          cronExpression: "10-20/5 12 * * *"
+          name: jd_plantBean
+          cronExpression: "0 3 */1 * * * *"
           enable: true
-          argument: jd_live
+          argument: jd_plantBean
     - timer: #她的节，享京豆
         parameters:
           name: jd_firecrackers
