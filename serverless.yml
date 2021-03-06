@@ -16,18 +16,18 @@ inputs:
   memorySize: 128 # 内存大小，单位MB
   timeout: 900 # 超时时间，单位秒
   events: # 触发器
-    - timer: #财富岛提现#极速版红包
+    - timer: #财富岛提现1元#极速版红包
         parameters:
           name: jx_cfdtx_jd_speed_redpocke
           cronExpression: "58 59 23 * * * *"
           enable: true
           argument: jx_cfdtx&jd_speed_redpocke
-    - timer: #东东超市兑换奖品 #摇京豆 #京东汽车兑换
+    - timer: #东东超市兑换1000豆 #摇京豆 
         parameters:
-          name: blueCoin_clublottery_carexchange
-          cronExpression: "0 0 0 * * * *"
+          name: blueCoin_clublottery
+          cronExpression: "58 59 23 * * * *"
           enable: true
-          argument: jd_blueCoin&jd_club_lottery&jd_car_exchange
+          argument: jd_blueCoin&jd_club_lottery
     - timer: #宠汪汪积分兑换京豆#签到领现金 #东东小窝
         parameters:
           name: joyreward_joysteal_cash_smallhome
@@ -40,12 +40,12 @@ inputs:
           cronExpression: "0 0 0-16/8,20 * * * *"
           enable: true
           argument: jd_joy_steal&jd_necklace
-    - timer: #东东超市
+    - timer: #京东汽车兑换500豆
         parameters:
-          name: superMarket
-          cronExpression: "0 15 */6 * * * *"
+          name: carexchange
+          cronExpression: "58 59 23 * * * *"
           enable: true
-          argument: jd_superMarket
+          argument: jd_car_exchange
     - timer: #京东全民开红包 #进店领豆
         parameters:
           name: redPacket_shop
