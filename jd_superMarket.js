@@ -1559,15 +1559,7 @@ function TotalBean() {
 function getTeam() {
   return new Promise(async resolve => {
     $.getTeams = [];
-<<<<<<< HEAD
     $.get({url: `https://raw.githubusercontent.com/jackpater/updateSupermarketTeam/master/jd_updateTeam.json`, timeout: 100000}, (err, resp, data) => {
-=======
-    $.get({url: "https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_updateTeam.json",
-           headers: {
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
-    }
-}, async (err, resp, data) => {
->>>>>>> 移除过期活动
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
