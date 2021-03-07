@@ -350,10 +350,10 @@ function followShop(good) {
 }
 
 async function tryGoodList() {
-	console.log(`⏰ 即将申请 ${$.goodList.length} 个商品`)
+	console.log(`⏰ 即将申请 ${100} 个商品`)
 	$.running = true
 	$.stopMsg = '申请完毕'
-	for (let i = 0; i < $.goodList.length && $.running; i++) {
+	for (let i = 0; i < 100 && $.running; i++) {
 		let good = $.goodList[i]
 		if (!await canTry(good)) continue
 		// 如果没有关注且关注失败
