@@ -73,7 +73,7 @@ inputs:
     - timer: #财富岛
         parameters:
           name: jx_cfd
-          cronExpression: "30 8,13,19 * * *"
+          cronExpression: "0 0,8,13,19 * * *"
           enable: true
           argument: jx_cfd
   environment: #  环境变量
