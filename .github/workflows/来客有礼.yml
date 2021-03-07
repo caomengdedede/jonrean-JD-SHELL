@@ -29,9 +29,6 @@ jobs:
               run: |
                   node onlyOneExecute.js
               env:
-                  JD_COOKIE: ${{ github.event.client_payload.JD_COOKIE || secrets.JD_COOKIE }}
-                  JD_DEBUG: ${{ github.event.client_payload.JD_DEBUG || secrets.JD_DEBUG }}
-                  JD_USER_AGENT: ${{ github.event.client_payload.JD_USER_AGENT || secrets.JD_USER_AGENT }}
                   token_lkyl: ${{ github.event.client_payload.token_lkyl || secrets.token_lkyl }}
                   signature_lkyl: ${{ github.event.client_payload.signature_lkyl || secrets.signature_lkyl }}
                   cookie_lkyl: ${{ github.event.client_payload.cookie_lkyl || secrets.cookie_lkyl }}
