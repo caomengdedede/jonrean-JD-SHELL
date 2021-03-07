@@ -1,4 +1,4 @@
-name: 自动删除旧的运行日志（超过三天）
+name: 自动删除旧的运行日志（超过2天）
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -12,4 +12,4 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.repository }}
-          retain_days: 3
+          retain_days: 2
