@@ -22,12 +22,12 @@ inputs:
           cronExpression: "58 59 23 * * * *"
           enable: true
           argument: jx_cfdtx
-    - timer: #东东超市兑换1000豆 
+    - timer: #东东超市兑换1000豆 #京东极速版红包2021-3-8至2021-3-25
         parameters:
-          name: blueCoin
+          name: blueCoin_jd_speed_redpocke
           cronExpression: "57 59 23 * * * *"
           enable: true
-          argument: jd_blueCoin
+          argument: jd_blueCoin&jd_speed_redpocke
     - timer: #宠汪汪积分兑换京豆#签到领现金 #东东小窝
         parameters:
           name: joyreward_joysteal_cash_smallhome
