@@ -255,7 +255,7 @@ function queryexpirejingdou() {
             if (data.ret === 0) {
               const expirejingdou = data['expirejingdou'][0]['expireamount'];
               if (expirejingdou > 0) {
-                $.message += `\n今日将过期：${expirejingdou}京豆 🐶`;
+                $.message += `\n今明二日过期：${expirejingdou}京豆 🐶`;
               }
             }
           } else {
