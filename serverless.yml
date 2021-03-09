@@ -42,10 +42,10 @@ inputs:
           argument: jd_joy_steal&jd_necklace
     - timer: #京东汽车兑换500豆
         parameters:
-          name: jd_car
+          name: jd_car_exchange
           cronExpression: "57 59 23 * * * *"
           enable: true
-          argument: jd_car
+          argument: jd_car_exchange
     - timer: #京东全民开红包 #进店领豆 #摇京豆 #监控crazyJoy分红
         parameters:
           name: redPacket_shop_clublottery_crazy_joy_bonus
