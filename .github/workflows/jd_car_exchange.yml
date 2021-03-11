@@ -6,7 +6,7 @@ name: jd_car_exchange
 on:
   workflow_dispatch:
   schedule:
-    - cron: '48 15 * * *'
+    - cron: '52 15 * * *'
   watch:
     types: started
   repository_dispatch:
