@@ -30,10 +30,10 @@ inputs:
           argument: jd_blueCoin&jd_speed_redpocke
     - timer: #宠汪汪积分兑换京豆#签到领现金 #东东小窝#京东直播#点点券#宠汪汪偷好友积分与狗粮 jd_joy_steal
         parameters:
-          name: joyreward_cash_smallhome_jd_live_necklace
+          name: joyreward_cash_smallhome_jd_live_necklace_joy_steal
           cronExpression: "0 0 0-16/8,20 * * * *"
           enable: true
-          argument: jd_joy_reward&jd_cash&jd_small_home&jd_live&jd_necklace
+          argument: jd_joy_reward&jd_cash&jd_small_home&jd_live&jd_necklace&jd_joy_steal
     - timer: #京东汽车兑换500豆
         parameters:
           name: jd_car_exchange
