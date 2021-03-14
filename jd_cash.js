@@ -80,7 +80,7 @@ let allMessage = '';
     }
   }
   if (allMessage) {
-    if ($.isNode()) await notify.sendNotify($.name, allMessage);
+   if ($.isNode() && (process.env.CASH_NOTIFY_CONTROL ? process.env.CASH_NOTIFY_CONTROL === 'false' : !!1)) await notify.sendNotify($.name, allMessage);
     $.msg($.name, '', allMessage);
   }
 })()
