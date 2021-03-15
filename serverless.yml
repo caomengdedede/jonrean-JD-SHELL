@@ -64,6 +64,12 @@ inputs:
           cronExpression: "30,31 20-23/1 9,12 3 *"
           enable: true
           argument: jd_live_redrain
+    - timer: #手机尚学季
+        parameters:
+          name: jd_xtg
+          cronExpression: "0 0 0 * * *"
+          enable: true
+          argument: jd_xtg
   environment: #  环境变量
     variables: #  环境变量对象
       AAA: BBB # 不要删除，用来格式化对齐追加的变量的
