@@ -19,13 +19,13 @@ inputs:
     - timer: #财富岛提现1元
         parameters:
           name: jx_cfdtx
-          cronExpression: "58 59 23 * * * *"
+          cronExpression: "57 59 23 * * * *"
           enable: true
           argument: jx_cfdtx
     - timer: #东东超市兑换1000豆 #京东极速版红包2021-3-8至2021-3-25
         parameters:
           name: blueCoin_jd_speed_redpocke
-          cronExpression: "56 59 23 * * * *"
+          cronExpression: "55 59 23 * * * *"
           enable: true
           argument: jd_blueCoin&jd_speed_redpocke
     - timer: #宠汪汪积分兑换京豆#签到领现金 #东东小窝#京东直播#点点券#宠汪汪偷好友积分与狗粮 jd_joy_steal
@@ -37,7 +37,7 @@ inputs:
     - timer: #京东汽车兑换500豆#手机尚学季
         parameters:
           name: jd_car_exchange_jd_xtg
-          cronExpression: "57 59 23 * * * *"
+          cronExpression: "56 59 23 * * * *"
           enable: true
           argument: jd_car_exchange&jd_xtg
     - timer: #京东全民开红包 #进店领豆 #摇京豆 #监控crazyJoy分红
@@ -61,7 +61,7 @@ inputs:
     - timer: #超级直播间红包雨
         parameters:
           name: jd_live_redrain
-          cronExpression: "30,31 20-23/1 9,12 3 *"
+          cronExpression: "30,31 20-23/1 * * *"
           enable: true
           argument: jd_live_redrain
   environment: #  环境变量
