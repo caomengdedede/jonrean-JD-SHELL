@@ -26,7 +26,7 @@ const $ = new Env('金口碑奖投票');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '', message = '';
-let needNotify = $.isNode() ? process.env.Z_MGOLD_NOTIFY || true : true; //是否需要通知
+let needNotify = $.isNode() ? process.env.Z_MGOLD_NOTIFY || false : false; //是否需要通知
 
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
