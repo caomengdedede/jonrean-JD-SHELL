@@ -31,6 +31,7 @@ const randomCount = $.isNode() ? 0 : 0;
 const inviteCodes = [
   `Ihs-be63Yf4h7G3Wz3cU1g@eU9YaeW6MKkupT3RnydBhA@9LK6uksnsG6w8mY`,
   `Ihs-be63Yf4h7G3Wz3cU1g@eU9YaeW6MKkupT3RnydBhA@9LK6uksnsG6w8mY`,
+  `Ihs-be63Yf4h7G3Wz3cU1g@eU9YaeW6MKkupT3RnydBhA@9LK6uksnsG6w8mY`,
   `Ihs-be63Yf4h7G3Wz3cU1g@eU9YaeW6MKkupT3RnydBhA@9LK6uksnsG6w8mY`
 ]
 if ($.isNode()) {

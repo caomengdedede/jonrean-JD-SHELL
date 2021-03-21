@@ -32,6 +32,7 @@ const inviteCodes = [
   'T022v_16QRwc8lbQPRn3kPMNdACjVWmIaW5kRrbA@T0225KkcRRcRowHfdEnwwKNYJgCjVWmIaW5kRrbA@T015aVT-lrmMI8ZBIxICjVWmIaW5kRrbA',
   'T022v_16QRwc8lbQPRn3kPMNdACjVWmIaW5kRrbA@T0225KkcRRcRowHfdEnwwKNYJgCjVWmIaW5kRrbA@T015aVT-lrmMI8ZBIxICjVWmIaW5kRrbA',
   'T022v_16QRwc8lbQPRn3kPMNdACjVWmIaW5kRrbA@T0225KkcRRcRowHfdEnwwKNYJgCjVWmIaW5kRrbA@T015aVT-lrmMI8ZBIxICjVWmIaW5kRrbA',
+  'T022v_16QRwc8lbQPRn3kPMNdACjVWmIaW5kRrbA@T0225KkcRRcRowHfdEnwwKNYJgCjVWmIaW5kRrbA@T015aVT-lrmMI8ZBIxICjVWmIaW5kRrbA',
 ];
 const randomCount = $.isNode() ? 0 : 0;
 const notify = $.isNode() ? require('./sendNotify') : '';

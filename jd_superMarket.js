@@ -30,6 +30,7 @@ let shareCodes = [ // IOS本地脚本用户这个列表填入你要助力的好�
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
   'eU9YaeW6MKkupT3RnydBhA@Ihs-be63Yf4h7G3Wz3cU1g@9LK6uksnsG6w8mY',
   'eU9YaeW6MKkupT3RnydBhA@Ihs-be63Yf4h7G3Wz3cU1g@9LK6uksnsG6w8mY',
+  'eU9YaeW6MKkupT3RnydBhA@Ihs-be63Yf4h7G3Wz3cU1g@9LK6uksnsG6w8mY',
 ]
 
 !(async () => {
