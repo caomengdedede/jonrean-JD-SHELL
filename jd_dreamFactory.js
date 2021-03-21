@@ -33,7 +33,7 @@ cron "10 * * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd
 
 const $ = new Env('京喜工厂');
 const JD_API_HOST = 'https://m.jingxi.com';
-const helpAu = true; //帮作者助力 免费拿活动
+const helpAu = false; //帮作者助力 免费拿活动
 const notify = $.isNode() ? require('./sendNotify') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 const randomCount = $.isNode() ? 0 : 0;
@@ -955,7 +955,7 @@ function QueryActiveConfig() {
         "Cookie": cookie,
         "Host": "m.jingxi.com",
         "Referer": "https://st.jingxi.com/pingou/dream_factory/divide.html",
-        "User-Agent": "jdpingou;iPhone;3.15.2;13.5.1;90bab9217f465a83a99c0b554a946b0b0d5c2f7a;network/wifi;model/iPhone12,1;appBuild/100365;ADID/696F8BD2-0820-405C-AFC0-3C6D028040E5;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/14;pap/JA2015_311210;brand/apple;supportJDSHWK/1;"
+        "User-Agent": "jdapp;android;9.3.6;10;8363637373830333236373735383-93D2930366035323631683265636;network/wifi;model/16th;addressid/1524177321;aid/235f13b48d89a170;oaid/;osVer/29;appBuild/86560;partner/meizu;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 10; 16th Build/QKQ1.191222.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36"
       }
     }
     $.get(options, (err, resp, data) => {
@@ -995,7 +995,7 @@ function QueryTuan(activeId, tuanId) {
         "Cookie": cookie,
         "Host": "m.jingxi.com",
         "Referer": "https://st.jingxi.com/pingou/dream_factory/divide.html",
-        "User-Agent": "jdpingou;iPhone;3.15.2;13.5.1;90bab9217f465a83a99c0b554a946b0b0d5c2f7a;network/wifi;model/iPhone12,1;appBuild/100365;ADID/696F8BD2-0820-405C-AFC0-3C6D028040E5;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/14;pap/JA2015_311210;brand/apple;supportJDSHWK/1;"
+        "User-Agent": "jdapp;android;9.3.6;10;8363637373830333236373735383-93D2930366035323631683265636;network/wifi;model/16th;addressid/1524177321;aid/235f13b48d89a170;oaid/;osVer/29;appBuild/86560;partner/meizu;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 10; 16th Build/QKQ1.191222.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36"
       }
     }
     $.get(options, (err, resp, data) => {
@@ -1034,7 +1034,7 @@ function CreateTuan() {
         "Cookie": cookie,
         "Host": "m.jingxi.com",
         "Referer": "https://st.jingxi.com/pingou/dream_factory/divide.html",
-        "User-Agent": "jdpingou;iPhone;3.15.2;13.5.1;90bab9217f465a83a99c0b554a946b0b0d5c2f7a;network/wifi;model/iPhone12,1;appBuild/100365;ADID/696F8BD2-0820-405C-AFC0-3C6D028040E5;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/14;pap/JA2015_311210;brand/apple;supportJDSHWK/1;"
+        "User-Agent": "jdapp;android;9.3.6;10;8363637373830333236373735383-93D2930366035323631683265636;network/wifi;model/16th;addressid/1524177321;aid/235f13b48d89a170;oaid/;osVer/29;appBuild/86560;partner/meizu;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 10; 16th Build/QKQ1.191222.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36"
       }
     }
     $.get(options, (err, resp, data) => {
@@ -1130,7 +1130,7 @@ function QueryAllTuan() {
         "Cookie": cookie,
         "Host": "m.jingxi.com",
         "Referer": "https://st.jingxi.com/pingou/dream_factory/divide.html",
-        "User-Agent": "jdpingou;iPhone;3.15.2;13.5.1;90bab9217f465a83a99c0b554a946b0b0d5c2f7a;network/wifi;model/iPhone12,1;appBuild/100365;ADID/696F8BD2-0820-405C-AFC0-3C6D028040E5;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/14;pap/JA2015_311210;brand/apple;supportJDSHWK/1;"
+        "User-Agent": "jdapp;android;9.3.6;10;8363637373830333236373735383-93D2930366035323631683265636;network/wifi;model/16th;addressid/1524177321;aid/235f13b48d89a170;oaid/;osVer/29;appBuild/86560;partner/meizu;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 10; 16th Build/QKQ1.191222.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36"
       }
     }
     $.get(options, async (err, resp, data) => {
@@ -1187,7 +1187,7 @@ function tuanAward(activeId, tuanId, isTuanLeader = true) {
         "Cookie": cookie,
         "Host": "m.jingxi.com",
         "Referer": "https://st.jingxi.com/pingou/dream_factory/divide.html",
-        "User-Agent": "jdpingou;iPhone;3.15.2;13.5.1;90bab9217f465a83a99c0b554a946b0b0d5c2f7a;network/wifi;model/iPhone12,1;appBuild/100365;ADID/696F8BD2-0820-405C-AFC0-3C6D028040E5;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/14;pap/JA2015_311210;brand/apple;supportJDSHWK/1;"
+        "User-Agent": "jdapp;android;9.3.6;10;8363637373830333236373735383-93D2930366035323631683265636;network/wifi;model/16th;addressid/1524177321;aid/235f13b48d89a170;oaid/;osVer/29;appBuild/86560;partner/meizu;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 10; 16th Build/QKQ1.191222.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36"
       }
     }
     $.get(options, async (err, resp, data) => {
@@ -1499,7 +1499,7 @@ function newtasksysUrl(functionId, taskId, stk) {
       'Host': 'm.jingxi.com',
       'Accept': '*/*',
       'Connection': 'keep-alive',
-      'User-Agent': "jdpingou;iPhone;3.15.2;13.5.1;90bab9217f465a83a99c0b554a946b0b0d5c2f7a;network/wifi;model/iPhone12,1;appBuild/100365;ADID/696F8BD2-0820-405C-AFC0-3C6D028040E5;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/14;pap/JA2015_311210;brand/apple;supportJDSHWK/1;",
+      'User-Agent': "jdapp;android;9.3.6;10;8363637373830333236373735383-93D2930366035323631683265636;network/wifi;model/16th;addressid/1524177321;aid/235f13b48d89a170;oaid/;osVer/29;appBuild/86560;partner/meizu;eufv/1;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 10; 16th Build/QKQ1.191222.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36",
       'Accept-Language': 'zh-cn',
       'Referer': 'https://wqsd.jd.com/pingou/dream_factory/index.html',
       'Accept-Encoding': 'gzip, deflate, br',
