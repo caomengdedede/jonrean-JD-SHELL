@@ -171,7 +171,7 @@ function addShare(shareId) {
           console.log(`助力结果${data}`)
           data = JSON.parse(data);
           if (data['code'] === 200) {
-            // console.log(`\n【京东账号${$.index}（${$.nickName || $.UserName}）助力好友 【${data['data']}】 成功\n`);
+            // console.log(`\n【京东账号${$.index}（${$.UserName}）助力好友 【${data['data']}】 成功\n`);
             console.log(`\n助力好友 【${data['data']}】 成功\n`);
           }
         }
@@ -481,7 +481,7 @@ function shareUrl() {
         // console.log('homeGoBrowse', data)
         if (data['code'] === 200) {
           $.shareId.push(data['data']);
-          console.log(`\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${data['data']}\n`);
+          console.log(`\n【京东账号${$.index}（${$.UserName}）的${$.name}好友互助码】${data['data']}\n`);
           console.log(`此邀请码一天一变化，旧的不可用`)
 
         }

@@ -229,7 +229,7 @@ def stage(cookies):
                 'Content-Type': 'application/json',
                 'Accept': '*/*',
                 'Connection': 'keep-alive',
-                'User-Agent': 'ting_v2.0.9_c5(CFNetwork, iOS 14.3, iPhone9,2)',
+                'User-Agent': 'ting_1.7.24(16th,Android29)',
                 'Accept-Language': 'zh-Hans-CN;q=1, en-CN;q=0.9',
                 'Accept-Encoding': 'gzip, deflate, br',
                 'X-Requested-With': 'XMLHttpRequest',
@@ -781,7 +781,7 @@ def saveListenTime(cookies, date_stamp):
 def listenData(cookies, date_stamp):
     print("\n【刷时长2】")
     headers = {
-        'User-Agent': 'ting_v1.1.9_c5(CFNetwork, iOS 14.0.1, iPhone9,2)',
+        'User-Agent': 'ting_1.7.24(16th,Android29)',
         'Host': 'm.ximalaya.com',
         'Content-Type': 'application/json',
     }
@@ -1056,7 +1056,7 @@ def user_info(cookies):
     headers = {
         'Host': 'mobile.ximalaya.com',
         'Accept': '*/*',
-        'User-Agent': 'ting_v2.1.3_c5(CFNetwork, iOS 14.4, iPhone13,2)',
+        'User-Agent': 'ting_1.7.24(16th,Android29)',
         'Accept-Language': 'zh-cn',
         'Accept-Encoding': 'gzip, deflate, br',
     }
