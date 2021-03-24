@@ -29,7 +29,7 @@ let shareId = '';
   if (!cookie) {
     $.msg('【京东账号一】热8超级盲盒', '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
   } else {
-    UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1]);
+    UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
     // await shareUrl();
     // await addShare();
     await getCoin();//领取每三小时自动生产的热力值
@@ -48,7 +48,7 @@ let shareId = '';
   await $.wait(1000);
   if (cookie2) {
     cookie = cookie2;
-    UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1]);
+    UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
     console.log(`\n开始【京东账号二】${UserName}\n`)
     await getCoin();//领取每三小时自动生产的热力值
     await Promise.all([
