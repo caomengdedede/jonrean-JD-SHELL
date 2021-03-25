@@ -19,15 +19,15 @@ inputs:
     - timer: #财富岛提现1元
         parameters:
           name: jx_cfdtx
-          cronExpression: "57 59 23 * * * *"
+          cronExpression: "55-59/1 59 23 * * * *"
           enable: true
           argument: jx_cfdtx
-    - timer: #东东超市兑换1000豆 #京东极速版红包2021-3-8至2021-3-25
+    - timer: #东东超市兑换1000豆
         parameters:
           name: blueCoin_jd_speed_redpocke
-          cronExpression: "56 59 23 * * * *"
+          cronExpression: "55-59/1 59 23 * * * *"
           enable: true
-          argument: jd_blueCoin&jd_speed_redpocke
+          argument: jd_blueCoin
     - timer: #宠汪汪积分兑换京豆#签到领现金 #东东小窝#京东直播#点点券#宠汪汪偷好友积分与狗粮 jd_joy_steal
         parameters:
           name: joyreward_cash_smallhome_jd_live_necklace_joy_steal
@@ -37,15 +37,15 @@ inputs:
     - timer: #京东汽车兑换500豆
         parameters:
           name: jd_car_exchange_
-          cronExpression: "57 59 23 * * * *"
+          cronExpression: "55-59/1 59 23 * * * *"
           enable: true
           argument: jd_car_exchange
-    - timer: #京东全民开红包 #进店领豆 #摇京豆 #监控crazyJoy分红
+    - timer: #京东全民开红包 #进店领豆 #摇京豆 #监控crazyJoy分红 #京东极速版红包2021-3-8至2021-3-25
         parameters:
-          name: redPacket_shop_clublottery_crazy_joy_bonus
-          cronExpression: "5 0 0 * * * *"
+          name: redPacket_shop_clublottery_crazy_joy_bonus_jd_speed_redpocke
+          cronExpression: "3 0 0 * * * *"
           enable: true
-          argument: jd_redPacket&jd_shop&jd_club_lottery&jd_crazy_joy_bonus
+          argument: jd_redPacket&jd_shop&jd_club_lottery&jd_crazy_joy_bonus&jd_speed_redpocke
     - timer: #京东国际盲盒
         parameters:
           name: jd_global_mh
