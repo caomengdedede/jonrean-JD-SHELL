@@ -173,7 +173,7 @@ function taskTuanUrl(function_id, body = {}) {
       Host: 'api.m.jd.com',
       Referer: 'https://servicewechat.com/wxa5bf5ee667d91626/108/page-frame.html',
       Cookie: $.currentCookie,
-      'User-Agent': 'jdapp;iPhone;9.2.2;14.2;%E4%BA%AC%E4%B8%9C/9.2.2 CFNetwork/1206 Darwin/20.1.0',
+      'User-Agent': 'jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1',
     },
   };
 }

@@ -40,12 +40,12 @@ inputs:
           cronExpression: "55-59/1 59 23 * * * *"
           enable: true
           argument: jd_car_exchange
-    - timer: #京东全民开红包 #进店领豆 #摇京豆 #监控crazyJoy分红 #京东极速版红包2021-3-8至2021-3-25
+    - timer: #京东全民开红包 #进店领豆 #摇京豆 #监控crazyJoy分红 
         parameters:
-          name: redPacket_shop_clublottery_crazy_joy_bonus_jd_speed_redpocke
+          name: redPacket_shop_clublottery_crazy_joy_bonus_
           cronExpression: "3 0 0 * * * *"
           enable: true
-          argument: jd_redPacket&jd_shop&jd_club_lottery&jd_crazy_joy_bonus&jd_speed_redpocke
+          argument: jd_redPacket&jd_shop&jd_club_lottery&jd_crazy_joy_bonus
     - timer: #京东国际盲盒
         parameters:
           name: jd_global_mh
