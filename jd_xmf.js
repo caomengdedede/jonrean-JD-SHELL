@@ -24,7 +24,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
-let helpAuthor = flase;//为作者助力的开关
+let helpAuthor = false;//为作者助力的开关
 const cp = $.isNode() ?  require('child_process'): '';
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
