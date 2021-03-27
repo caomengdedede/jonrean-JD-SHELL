@@ -6,7 +6,7 @@ name: jd_try
 on:
     workflow_dispatch:
     schedule:
-        - cron: "0 0,1,12 * * *"
+        - cron: "0 0,12 * * *"
         #一天2次。
     watch:
         types: [started]
