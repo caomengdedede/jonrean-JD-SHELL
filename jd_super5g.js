@@ -25,7 +25,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 //IOS等用户直接用NobyDa的jd cookie
-let cookiesArr = [], cookie = '', message;
+let cookiesArr = [], cookie = '', message, allMessage = '';
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -51,7 +51,7 @@ $.shareId = [];
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
+      $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1]);
       $.index = i + 1;
       $.isLogin = true;
       $.nickName = '';
@@ -76,15 +76,14 @@ $.shareId = [];
       await getAward();//抽奖
     }
   }
-  //ios端22点通知一次
-  if (new Date().getHours() === 22) {
-    $.msg($.name, '', `任务已做完\n抽奖详情查看 https://isp5g.m.jd.com`, {"open-url": "https://isp5g.m.jd.com"});
+  if (allMessage) {
+    if ($.isNode()) await notify.sendNotify($.name, allMessage);
+    $.msg($.name, '', allMessage, {"open-url": "https://isp5g.m.jd.com"})
   }
-
   for (let v = 0; v < cookiesArr.length; v++) {
     cookie = cookiesArr[v];
     $.index = v + 1;
-    $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
+    $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1]);
     console.log(`\n\n自己账号内部互助`);
     for (let item of $.shareId) {
       console.log(`账号 ${$.index} ${$.UserName} 开始给 ${item}进行助力`)
@@ -171,7 +170,7 @@ function addShare(shareId) {
           console.log(`助力结果${data}`)
           data = JSON.parse(data);
           if (data['code'] === 200) {
-            // console.log(`\n【京东账号${$.index}（${$.UserName}）助力好友 【${data['data']}】 成功\n`);
+            // console.log(`\n【京东账号${$.index}（${$.nickName || $.UserName}）助力好友 【${data['data']}】 成功\n`);
             console.log(`\n助力好友 【${data['data']}】 成功\n`);
           }
         }
@@ -249,6 +248,8 @@ function getCoin() {
         }
       } catch (e) {
         $.logErr(e, resp);
+      } finally {
+        resolve();
       }
     })
   })
@@ -400,11 +401,15 @@ async function getAward() {
           console.log(`====抽奖结果====,${JSON.stringify(lotteryRes.data)}`);
           console.log(lotteryRes.data.name);
           console.log(lotteryRes.data.beanNum);
+          if ((lotteryRes.data['prizeId'] && lotteryRes.data['prizeId'] !== '9999') || lotteryRes.data.name === '未中奖') {
+            message += `抽奖获得：${lotteryRes.data.name}\n`;
+          }
         } else if (lotteryRes.code === 4001) {
           console.log(`抽奖失败,${lotteryRes.msg}`);
           break;
         }
       }
+      if (message) allMessage += `京东账号${$.index} ${$.nickName}\n${message}抽奖详情查看 https://isp5g.m.jd.com/#/myPrize${$.index !== cookiesArr.length ? '\n\n' : ''}`
     } else {
       console.log(`目前热力值${total},不够抽奖`)
     }
@@ -481,9 +486,8 @@ function shareUrl() {
         // console.log('homeGoBrowse', data)
         if (data['code'] === 200) {
           $.shareId.push(data['data']);
-          console.log(`\n【京东账号${$.index}（${$.UserName}）的${$.name}好友互助码】${data['data']}\n`);
+          console.log(`\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${data['data']}\n`);
           console.log(`此邀请码一天一变化，旧的不可用`)
-
         }
       } catch (e) {
         $.logErr(e, resp);
@@ -507,7 +511,7 @@ function taskurl(url) {
     }
   }
 }
-function updateShareCodesCDN(url = 'https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes11/jd_5g.json') {
+function updateShareCodesCDN(url = 'https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_5g.json') {
   return new Promise(resolve => {
     $.get({
       url ,
@@ -519,10 +523,8 @@ function updateShareCodesCDN(url = 'https://gitee.com/Soundantony/updateTeam/raw
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           $.updatePkActivityIdRes = JSON.parse(data);
-          
           if ($.updatePkActivityIdRes && $.updatePkActivityIdRes.length) {
             $.shareId = $.updatePkActivityIdRes;
-            console.log($.shareId)
           }
         }
       } catch (e) {
