@@ -2,6 +2,7 @@
  "name": "全网JD task整理",
  "description": "及时更新，善用搜索",
  "task": [
+    "0 0,1-22/2 1-31 4-7 *  https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js, tag=有机牧场, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true",
     "2 9 * * * https://jdsharedresourcescdn.azureedge.net/jdresource/jd_bean_change.js, tag=京东资产变动通知, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true",
     "0 0 * * * https://raw.githubusercontent.com/monk-coder/dust/dust/normal/monk_inter_shop_sign.js, tag=interCenter渠道店铺签到,  enabled=true",
     "15 15 * * * https://raw.githubusercontent.com/monk-coder/dust/dust/normal/monk_shop_follow_sku.js, tag=关注有礼,  enabled=true",
