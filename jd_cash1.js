@@ -27,7 +27,7 @@ let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭�
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
 let helpAuthor = false;
-const randomCount = $.isNode() ? 20 : 5;
+const randomCount = $.isNode() ? 0 : 0;
 let t = +new Date()
 const inviteCodes = [
   `eU9Yae-7Yapy-WmAyXYb1A@eU9Ya-21M_8gomjRyHQThQ@eU9Yab2wbvon8m7XyCVBhw@eU9Yar21MqklomyDy3Aa3g@eU9Yaemybvog-G3XwnYR1A`,
@@ -88,7 +88,7 @@ let allMessage = '';
 async function jdCash() {
   await index()
   await shareCodesFormat()
-  //await helpFriends()
+  await helpFriends()
   await getReward()
   await getReward('2')
   await index(true)
@@ -156,41 +156,41 @@ function index(info=false) {
     })
   })
 }
-//async function helpFriends() {
-  //$.canHelp = true
-  //for (let code of $.newShareCodes) {
-    //console.log(`去帮助好友${code['inviteCode']}`)
-    //await helpFriend(code)
-    //if(!$.canHelp) break
-    //await $.wait(1000)
+async function helpFriends() {
+  $.canHelp = true
+  for (let code of $.newShareCodes) {
+    console.log(`去帮助好友${code['inviteCode']}`)
+    await helpFriend(code)
+    if(!$.canHelp) break
+    await $.wait(1000)
   }
-  // if (helpAuthor && $.authorCode) {
-  //   for(let helpInfo of $.authorCode){
-  //     console.log(`去帮助好友${helpInfo['inviteCode']}`)
-  //     await helpFriend(helpInfo)
-  //     if(!$.canHelp) break
-  //     await $.wait(1000)
-  //   }
-  // }
+   if (helpAuthor && $.authorCode) {
+     for(let helpInfo of $.authorCode){
+       console.log(`去帮助好友${helpInfo['inviteCode']}`)
+       await helpFriend(helpInfo)
+       if(!$.canHelp) break
+       await $.wait(1000)
+     }
+   }
 }
-//function helpFriend(helpInfo) {
-  //return new Promise((resolve) => {
-    //$.get(taskUrl("cash_mob_assist", {...helpInfo,"source":1}), (err, resp, data) => {
-      //try {
-        //if (err) {
-         // console.log(`${JSON.stringify(err)}`)
-         // console.log(`${$.name} API请求失败，请检查网路重试`)
-        //} else {
-          //if (safeGet(data)) {
-           // data = JSON.parse(data);
-            //if( data.code === 0 && data.data.bizCode === 0){
-              //console.log(`助力成功，获得${data.data.result.cashStr}`)
-              // console.log(data.data.result.taskInfos)
-            //} else if (data.data.bizCode===207){
-              //console.log(data.data.bizMsg)
-             // $.canHelp = false
-           // } else{
-              //console.log(data.data.bizMsg)
+function helpFriend(helpInfo) {
+  return new Promise((resolve) => {
+    $.get(taskUrl("cash_mob_assist", {...helpInfo,"source":1}), (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
+        } else {
+          if (safeGet(data)) {
+            data = JSON.parse(data);
+            if( data.code === 0 && data.data.bizCode === 0){
+              console.log(`助力成功，获得${data.data.result.cashStr}`)
+               console.log(data.data.result.taskInfos)
+            } else if (data.data.bizCode===207){
+              console.log(data.data.bizMsg)
+              $.canHelp = false
+            } else{
+              console.log(data.data.bizMsg)
             }
           }
         }
@@ -375,7 +375,7 @@ function taskUrl(functionId, body = {}) {
   }
 }
 
-function getAuthorShareCode(url = "https://gitee.com/Soundantony/updateTeam/raw/master/shareCodes/jd_updateCash.json") {
+#function getAuthorShareCode(url = "jonrean/own") {
   return new Promise(resolve => {
     $.get({url, headers:{
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
