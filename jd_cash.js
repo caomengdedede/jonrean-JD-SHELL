@@ -27,7 +27,7 @@ let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭�
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
 let helpAuthor = false;
-const randomCount = $.isNode() ? 20 : 5;
+const randomCount = $.isNode() ? 0 : 0;
 const inviteCodes = [
   `eU9Yae-7Yapy-WmAyXYb1A@eU9Ya-21M_8gomjRyHQThQ@eU9Yab2wbvon8m7XyCVBhw@eU9Yar21MqklomyDy3Aa3g@eU9Yaemybvog-G3XwnYR1A`,
   `eU9Yae-7Yapy-WmAyXYb1A@eU9Ya-21M_8gomjRyHQThQ@eU9Yab2wbvon8m7XyCVBhw@eU9Yar21MqklomyDy3Aa3g@eU9Yaemybvog-G3XwnYR1A`
