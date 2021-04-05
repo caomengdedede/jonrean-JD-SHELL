@@ -30,8 +30,8 @@ let helpAuthor = false;
 const randomCount = $.isNode() ? 20 : 5;
 let t = +new Date()
 const inviteCodes = [
-  ``,
-  ``
+  `eU9Yae-7Yapy-WmAyXYb1A@eU9Ya-21M_8gomjRyHQThQ@eU9Yab2wbvon8m7XyCVBhw@eU9Yar21MqklomyDy3Aa3g@eU9Yaemybvog-G3XwnYR1A`,
+  `eU9Yae-7Yapy-WmAyXYb1A@eU9Ya-21M_8gomjRyHQThQ@eU9Yab2wbvon8m7XyCVBhw@eU9Yar21MqklomyDy3Aa3g@eU9Yaemybvog-G3XwnYR1A`
 ]
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
