@@ -4,7 +4,7 @@
 2 所有新活动 都会及时添加更新
 3 勿传播
 
-## 同步仓库: 需要申请Token，Token申请可参考https://likeai.me/archives/183/  第二步我已经写好，只需将同步仓库的yml打开，获取的token放进secrets里面就行 
+## 同步仓库: 需要申请Token，Token申请可参考https://likeai.me/archives/183/  第二步我已经写好，只需将action里同步仓库的yml打开，获取的token放进secrets里面就行 
 
 * 本仓库发布的MyActions项目中涉及的任何解锁和解密分析脚本，仅用于测试和学习研究，禁止用于商业用途，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断.
 
