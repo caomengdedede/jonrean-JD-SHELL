@@ -6,7 +6,7 @@ name: 京东萌宠🐱
 on:
     workflow_dispatch:
     schedule:
-        - cron: "40 4,10,23 * * *"
+        - cron: "0 0-12/4 * * *"
     watch:
         types: [started]
     repository_dispatch:
