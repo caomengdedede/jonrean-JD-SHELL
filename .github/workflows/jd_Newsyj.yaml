@@ -6,7 +6,7 @@ name: New赚京豆🥔🥔
 on:
     workflow_dispatch:
     schedule:
-        - cron: "10 0 * * *"
+        - cron: "10 0-23/6 * * *"
     watch:
         types: [started]
     repository_dispatch:
