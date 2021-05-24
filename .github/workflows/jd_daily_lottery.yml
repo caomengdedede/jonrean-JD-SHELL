@@ -6,11 +6,11 @@ name: JD每日抽奖
 on:
     workflow_dispatch:
     schedule:
-        - cron: "4 10,22,23 * * *"
+        - cron: "13 1,22,23 * * *"
     watch:
         types: [started]
     repository_dispatch:
-        types: jd_daily_lottery.js
+        types: jd_daily_lottery
 
 jobs:
     build:
@@ -46,4 +46,4 @@ jobs:
                   QYWX_AM: ${{ github.event.client_payload.QYWX_AM || secrets.QYWX_AM }}
                   PUSH_PLUS_TOKEN: ${{ github.event.client_payload.PUSH_PLUS_TOKEN || secrets.PUSH_PLUS_TOKEN }}
                   PUSH_PLUS_USER: ${{ github.event.client_payload.PUSH_PLUS_USER || secrets.PUSH_PLUS_USER }}
-                  SYNCURL: https://github.com/jonrean/JD-SHELL/blob/09aaa8391590a79f1a4ceae2e1c0ac31d3bd2a7d/jd_daily_lottery.js
+                  SYNCURL: https://github.com/amlph/amiph/raw/main/jd_daily_lottery.js
