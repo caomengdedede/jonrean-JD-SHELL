@@ -6,11 +6,11 @@ name: JD每日抽奖
 on:
     workflow_dispatch:
     schedule:
-        - cron: "13 1,22,23 * * *"
+        - cron: "4 10,22,23 * * *"
     watch:
         types: [started]
     repository_dispatch:
-        types: jd_daily_lottery
+        types: jd_daily_lottery.js
 
 jobs:
     build:
