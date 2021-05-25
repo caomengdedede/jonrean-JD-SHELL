@@ -31,8 +31,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [];
 $.cookie = '';
-$.inviteList =  [  'ZXTKT0225KkcRR0Q8gKDKB2hlvICdgFjRWn6-7zx55awQ','ZXTKT018v_VwQR8c8lHXJRqb1AFjRWn6-7zx55awQ','ZXTKT0205KkcI0N5vRSSdEWD_YhYFjRWn6-7zx55awQ',
-  'ZXTKT0225KkcRh5M9wHVcx7ylfYOIgFjRWn6-7zx55awQ'  
+$.inviteList =  [  'ZXTKT0225KkcRR0Q8gKDKB2hlvICdgFjRWn6-7zx55awQ'  
 ];
 $.pkInviteList = [  'sSKNX-MpqKPS7Le5mJ7eAa4aGOxggUVnh0hS9Pd7bfH_0Dnev2FoXps','sSKNX-MpqKOUsMrZ3OqQedAeyUyxG4-gLLiOZ4U6MPq-KpjHtrUvGzh1UsoJ',
   'sSKNX-MpqKOJsNvbxPuRROEDMANfgypRJpv86uUHUEQYjojk_3jFEaf_9JF7',];
