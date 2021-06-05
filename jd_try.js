@@ -1,39 +1,34 @@
 /*
-京东价格保护：脚本更新地址 https://raw.githubusercontent.com/ZCY01/daily_scripts/main/jd/jd_try.js
+update 2021/4/11
+京东试用：脚本更新地址 https://raw.githubusercontent.com/ZCY01/daily_scripts/main/jd/jd_try.js
 脚本兼容: QuantumultX, Node.js
 
 ⚠️ 非常耗时的脚本。最多可能执行半小时！
-⚠️ 每天最多关注300个商店，但用户商店关注上限为500个。
+每天最多关注300个商店，但用户商店关注上限为500个。
 请配合取关脚本试用，使用 jd_unsubscribe.js 提前取关至少250个商店确保京东试用脚本正常运行。
-
-商品最低价格（包含）（默认60）：JD_TRY_MIN_PRICE
-收集商品时每页的商品数量（默认12）：JD_TRY_PAGE_SIZE
-
 ==========================Quantumultx=========================
 [task_local]
 # 取关京东店铺商品，请在 boxjs 修改取消关注店铺数量
 5 10 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_unsubscribe.js, tag=取关京东店铺商品, enabled=true
 
-# 京东价格保护
+# 京东试用
 30 10 * * * https://raw.githubusercontent.com/ZCY01/daily_scripts/main/jd/jd_try.js, tag=京东试用, img-url=https://raw.githubusercontent.com/ZCY01/img/master/jdtryv1.png, enabled=true
  */
 const $ = new Env('京东试用')
-let allMessage = '';
-let cookiesArr = [],
-	cookie = '',
-	jdNotify = false,
-	jdDebug = false,
-	notify
-const selfdomain = 'https://try.m.jd.com'
+
+const selfDomain = 'https://try.m.jd.com'
 let allGoodList = []
 
 // default params
-$.pageSize = 12
-let cidsList = ["家用电器", "手机数码", "电脑办公", "家居家装"]
-let typeList = ["普通试用", "闪电试用"]
-let goodFilters = "教程@软件@英语@辅导@花盆@车@电信@移动@联通@培训@靓美@脚气@文胸@卷尺@看房@鞋带@益生菌@丰胸@课程培训@体验班@精品课@红参@益生元@御夫王@苗霸@北海游@购房@键盘膜@情趣内衣@种子@三元催化@男用喷剂@玉石@万向轮@档案袋@癣@中年@玉坠@老太太@妇女@私处@孕妇@卫生巾@卫生条@课@培训@阴道@生殖器@肛门@狐臭@少女内衣@胸罩@洋娃娃@男孩玩具@女孩玩具@益智@少女@女性内衣@女性内裤@女内裤@女内衣@女孩@鱼饵@钓鱼@童装@吊带@黑丝@钢圈@婴儿@儿童@玩具@幼儿@娃娃@网课@网校@电商@手机壳@钢化膜@车载充电器@网络课程@疣@避孕套@女纯棉@按键贴@背膜@后膜@背贴@贝尔思力@卡薇尔@三角裤@痔疮@神皂@美少女@纸尿裤@英语@俄语@四级@六级@四六级@在线网络@在线@阴道炎@宫颈@螺丝@延时@糜烂@和田玉@白玉@打底裤@手机膜@早早孕@延时喷剂@鱼@增长@增时@壮阳@女用@男用@狗@艾草@灸@贴@膏@药北海@印度@油@在线@膜".split('@')
-let minPrice = 60
-let maxPrice = 2500
+const args = {
+	jdNotify: false,
+	pageSize: 12,
+	cidsList: ["家用电器", "手机数码", "电脑办公", "家居家装"],
+	typeList: ["普通试用", "闪电试用"],
+	goodFilters: "教程@软件@英语@辅导@培训".split('@'),
+	minPrice: 0,
+	maxSupplyCount: 10,
+}
 
 const cidsMap = {
 	"全部商品": "0",
@@ -53,105 +48,101 @@ const cidsMap = {
 	"更多惊喜": "4938,13314,6994,9192,12473,6196,5272,12379,13678,15083,15126,15980",
 }
 const typeMap = {
-	"全部试用": "0",
-	"普通试用": "1",
-	"闪电试用": "2",
-	"30天试用": "5",
-}
-
-!(async () => {
-	await requireConfig()
-	if (!cookiesArr[0]) {
-		$.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', {
-			"open-url": "https://bean.m.jd.com/"
-		})
-		return
+		"全部试用": "0",
+		"普通试用": "1",
+		"闪电试用": "2",
+		"30天试用": "5",
 	}
-	for (let i = 0; i < cookiesArr.length; i++) {
-		if (cookiesArr[i]) {
-			cookie = cookiesArr[i];
-			$.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
-			$.index = i + 1;
-			$.isLogin = true;
-			$.nickName = '';
-			await TotalBean();
-			console.log(`\n开始【京东账号${$.index}】${$.nickName || $.UserName}\n`);
-			if (!$.isLogin) {
-				$.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {
-					"open-url": "https://bean.m.jd.com/bean/signIndex.action"
-				});
 
-				if ($.isNode()&& allMessage) {
-					await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
-				}
-				continue
-			}
-
-			$.goodList = []
-			$.successList = []
-			if(allGoodList.length == 0){
-				await getGoodList()
-			}
-			await filterGoodList()
-
-			$.totalTry = 0
-			$.totalGoods = $.goodList.length
-			await tryGoodList()
-			await getSuccessList()
-
-			await showMsg()
+	!(async () => {
+		await requireConfig()
+		if (!$.cookiesArr[0]) {
+			$.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', {
+				"open-url": "https://bean.m.jd.com/"
+			})
+			return
 		}
-	}
-})()
-.catch((e) => {
-	console.log(`❗️ ${$.name} 运行错误！\n${e}`)
-	if (eval(jdDebug)) $.msg($.name, ``, `${e}`)
-}).finally(() => $.done())
+		for (let i = 0; i < $.cookiesArr.length; i++) {
+			if ($.cookiesArr[i]) {
+				$.cookie = $.cookiesArr[i];
+				$.UserName = decodeURIComponent($.cookie.match(/pt_pin=(.+?);/) && $.cookie.match(/pt_pin=(.+?);/)[1])
+				$.index = i + 1;
+				$.isLogin = true;
+				$.nickName = '';
+				await totalBean();
+				console.log(`\n开始【京东账号${$.index}】${$.nickName || $.UserName}\n`);
+				if (!$.isLogin) {
+					$.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {
+						"open-url": "https://bean.m.jd.com/bean/signIndex.action"
+					});
+					await $.notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
+					continue
+				}
+
+				$.goodList = []
+				$.successList = []
+				if (i == 0) {
+					await getGoodList()
+				}
+				await filterGoodList()
+
+				$.totalTry = 0
+				$.totalGoods = $.goodList.length
+				await tryGoodList()
+				await getSuccessList()
+
+				await showMsg()
+			}
+		}
+	})()
+	.catch((e) => {
+		console.log(`❗️ ${$.name} 运行错误！\n${e}`)
+	}).finally(() => $.done())
 
 function requireConfig() {
 	return new Promise(resolve => {
 		console.log('开始获取配置文件\n')
-		notify = $.isNode() ? require('./sendNotify') : '';
-		//Node.js用户请在jdCookie.js处填写京东ck;
+		$.notify = $.isNode() ? require('./sendNotify') : {sendNotify:async () => {}}
+
+		//获取 Cookies
+		$.cookiesArr = []
 		if ($.isNode()) {
-			const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
+			//Node.js用户请在jdCookie.js处填写京东ck;
+			const jdCookieNode = require('./jdCookie.js');
 			Object.keys(jdCookieNode).forEach((item) => {
 				if (jdCookieNode[item]) {
-					cookiesArr.push(jdCookieNode[item])
+					$.cookiesArr.push(jdCookieNode[item])
 				}
 			})
 			if (process.env.JD_DEBUG && process.env.JD_DEBUG === 'false') console.log = () => {};
 		} else {
-			//IOS等用户直接用NobyDa的jd cookie
-			let cookiesData = $.getdata('CookiesJD') || "[]";
-			cookiesData = jsonParse(cookiesData);
-			cookiesArr = cookiesData.map(item => item.cookie);
-			cookiesArr.reverse();
-			cookiesArr.push(...[$.getdata('CookieJD2'), $.getdata('CookieJD')]);
-			cookiesArr.reverse();
-			cookiesArr = cookiesArr.filter(item => item !== "" && item !== null && item !== undefined);
+			//IOS等用户直接用NobyDa的jd $.cookie
+			$.cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 		}
-		console.log(`共${cookiesArr.length}个京东账号\n`)
+		console.log(`共${$.cookiesArr.length}个京东账号\n`)
 
 		if ($.isNode()) {
 			if (process.env.JD_TRY_CIDS_KEYS) {
-				cidsList = process.env.JD_TRY_CIDS_KEYS.split('@').filter(key=>{
+				args.cidsList = process.env.JD_TRY_CIDS_KEYS.split('@').filter(key => {
 					return Object.keys(cidsMap).includes(key)
 				})
 			}
 			if (process.env.JD_TRY_TYPE_KEYS) {
-				typeList = process.env.JD_TRY_CIDS_KEYS.split('@').filter(key=>{
+				args.typeList = process.env.JD_TRY_TYPE_KEYS.split('@').filter(key => {
 					return Object.keys(typeMap).includes(key)
 				})
 			}
-			if(process.env.JD_TRY_GOOD_FILTERS){
-				goodFilters = process.env.JD_TRY_GOOD_FILTERS.split('@')
+			if (process.env.JD_TRY_GOOD_FILTERS) {
+				args.goodFilters = process.env.JD_TRY_GOOD_FILTERS.split('@')
 			}
 			if (process.env.JD_TRY_MIN_PRICE) {
-				minPrice = process.env.JD_TRY_MIN_PRICE * 1
+				args.minPrice = process.env.JD_TRY_MIN_PRICE * 1
 			}
 			if (process.env.JD_TRY_PAGE_SIZE) {
-				$.pageSize = process.env.JD_TRY_PAGE_SIZE * 1
+				args.pageSize = process.env.JD_TRY_PAGE_SIZE * 1
+			}
+			if (process.env.JD_TRY_MAX_SUPPLY_COUNT) {
+				args.maxSupplyCount = process.env.JD_TRY_MAX_SUPPLY_COUNT * 1
 			}
 		} else {
 			let qxCidsList = []
@@ -166,21 +157,21 @@ function requireConfig() {
 				const open = $.getdata(key)
 				if (open == 'true') qxTypeList.push(key)
 			}
-			if (qxCidsList.length != 0) cidsList = qxCidsList
-			if (qxTypeList.length != 0) typeList = qxTypeList
-			if ($.getdata('filter')) goodFilters = $.getdata('filter').split('&')
-			if ($.getdata('min_price')) minPrice = Number($.getdata('min_price'))
-			if ($.getdata('page_size')) $.pageSize = Number($.getdata('page_size'))
-			if ($.pageSize == 0) $.pageSize = 12
+			if (qxCidsList.length != 0) args.cidsList = qxCidsList
+			if (qxTypeList.length != 0) args.typeList = qxTypeList
+			if ($.getdata('filter')) args.goodFilters = $.getdata('filter').split('@')
+			if ($.getdata('min_price')) args.minPrice = Number($.getdata('min_price'))
+			if ($.getdata('page_size')) args.pageSize = Number($.getdata('page_size'))
+			if ($.getdata('max_supply_count')) args.maxSupplyCount = Number($.getdata('max_supply_count'))
+			if (args.pageSize == 0) args.pageSize = 12
 		}
 		resolve()
 	})
 }
 
 function getGoodListByCond(cids, page, pageSize, type, state) {
-
 	return new Promise((resolve, reject) => {
-		let option = taskurl(`${selfdomain}/activity/list?pb=1&cids=${cids}&page=${page}&pageSize=${pageSize}&type=${type}&state=${state}`)
+		let option = taskurl(`${selfDomain}/activity/list?pb=1&cids=${cids}&page=${page}&pageSize=${pageSize}&type=${type}&state=${state}`)
 		delete option.headers['Cookie']
 		$.get(option, (err, resp, data) => {
 			try {
@@ -205,15 +196,15 @@ function getGoodListByCond(cids, page, pageSize, type, state) {
 }
 
 async function getGoodList() {
-	if (cidsList.length === 0) cidsList.push("全部商品")
-	if (typeList.length === 0) typeList.push("全部试用")
-	for (let cidsKey of cidsList) {
-		for (let typeKey of typeList) {
+	if (args.cidsList.length === 0) args.cidsList.push("全部商品")
+	if (args.typeList.length === 0) args.typeList.push("全部试用")
+	for (let cidsKey of args.cidsList) {
+		for (let typeKey of args.typeList) {
 			if (!cidsMap.hasOwnProperty(cidsKey) || !typeMap.hasOwnProperty(typeKey)) continue
 			console.log(`⏰ 获取 ${cidsKey} ${typeKey} 商品列表`)
 			$.totalPages = 1
 			for (let page = 1; page <= $.totalPages; page++) {
-				await getGoodListByCond(cidsMap[cidsKey], page, $.pageSize, typeMap[typeKey], '0')
+				await getGoodListByCond(cidsMap[cidsKey], page, args.pageSize, typeMap[typeKey], '0')
 			}
 		}
 	}
@@ -228,12 +219,15 @@ async function filterGoodList() {
 		// 2. good 距离结束不到10min
 		// 3. good 的结束时间大于一天
 		// 4. good 的价格小于最小的限制
-		// 5. good 的价格大于最大的限制
-		if (!good || good.endTime < now + 10 * 60 * 1000 || good.endTime > oneMoreDay || good.jdPrice < minPrice || good.jdPrice > maxPrice) {
+		// 5. good 的试用数量大于 maxSupplyCount, 视为垃圾商品
+		if (!good || good.endTime < now + 10 * 60 * 1000 || good.endTime > oneMoreDay || good.jdPrice < args.minPrice) {
 			return false
 		}
-		for (let item of goodFilters) {
+		for (let item of args.goodFilters) {
 			if (good.trialName.indexOf(item) != -1) return false
+		}
+		if(good.supplyCount > args.maxSupplyCount){
+			return false
 		}
 		return true
 
@@ -247,7 +241,7 @@ async function filterGoodList() {
 async function getApplyStateByActivityIds() {
 	function opt(ids) {
 		return new Promise((resolve, reject) => {
-			$.get(taskurl(`${selfdomain}/getApplyStateByActivityIds?activityIds=${ids.join(',')}`), (err, resp, data) => {
+			$.get(taskurl(`${selfDomain}/getApplyStateByActivityIds?activityIds=${ids.join(',')}`), (err, resp, data) => {
 				try {
 					if (err) {
 						console.log(`🚫 ${arguments.callee.name.toString()} API请求失败，请检查网路\n${JSON.stringify(err)}`)
@@ -276,7 +270,7 @@ async function getApplyStateByActivityIds() {
 	let list = []
 	for (let good of $.goodList) {
 		list.push(good.id)
-		if (list.length == $.pageSize) {
+		if (list.length == args.pageSize) {
 			await opt(list)
 			list.length = 0
 		}
@@ -287,7 +281,7 @@ async function getApplyStateByActivityIds() {
 function canTry(good) {
 	return new Promise((resolve, reject) => {
 		let ret = false
-		$.get(taskurl(`${selfdomain}/activity?id=${good.id}`), (err, resp, data) => {
+		$.get(taskurl(`${selfDomain}/activity?id=${good.id}`), (err, resp, data) => {
 			try {
 				if (err) {
 					console.log(`🚫 ${arguments.callee.name.toString()} API请求失败，请检查网路\n${JSON.stringify(err)}`)
@@ -309,7 +303,7 @@ function canTry(good) {
 
 function isFollowed(good) {
 	return new Promise((resolve, reject) => {
-		$.get(taskurl(`${selfdomain}/isFollowed?id=${good.shopId}`, good.id), (err, resp, data) => {
+		$.get(taskurl(`${selfDomain}/isFollowed?id=${good.shopId}`, good.id), (err, resp, data) => {
 			try {
 				if (err) {
 					console.log(`🚫 ${arguments.callee.name.toString()} API请求失败，请检查网路\n${JSON.stringify(err)}`)
@@ -328,7 +322,7 @@ function isFollowed(good) {
 
 function followShop(good) {
 	return new Promise((resolve, reject) => {
-		$.get(taskurl(`${selfdomain}/followShop?id=${good.shopId}`, good.id), (err, resp, data) => {
+		$.get(taskurl(`${selfDomain}/followShop?id=${good.shopId}`, good.id), (err, resp, data) => {
 			try {
 				if (err) {
 					console.log(`🚫 ${arguments.callee.name.toString()} API请求失败，请检查网路\n${JSON.stringify(err)}`)
@@ -359,7 +353,7 @@ async function tryGoodList() {
 		// 如果没有关注且关注失败
 		if (good.shopId && !await isFollowed(good) && !await followShop(good)) continue
 		// 两个申请间隔不能太短，放在下面有利于确保 follwShop 完成
-		await $.wait(7000)
+		await $.wait(5000)
 		// 关注完毕，即将试用
 		await doTry(good)
 	}
@@ -367,7 +361,7 @@ async function tryGoodList() {
 
 async function doTry(good) {
 	return new Promise((resolve, reject) => {
-		$.get(taskurl(`${selfdomain}/migrate/apply?activityId=${good.id}&source=1&_s=m`, good.id), (err, resp, data) => {
+		$.get(taskurl(`${selfDomain}/migrate/apply?activityId=${good.id}&source=1&_s=m`, good.id), (err, resp, data) => {
 			try {
 				if (err) {
 					console.log(`🚫 ${arguments.callee.name.toString()} API请求失败，请检查网路\n${JSON.stringify(err)}`)
@@ -405,7 +399,7 @@ async function getSuccessList() {
 				'Referer': 'https://try.m.jd.com/',
 				'Accept-Encoding': 'gzip, deflate, br',
 				'Accept-Language': 'zh,zh-CN;q=0.9,en;q=0.8',
-				'Cookie': cookie
+				'Cookie': $.cookie
 			}
 		}
 		$.get(option, (err, resp, data) => {
@@ -433,13 +427,11 @@ async function getSuccessList() {
 
 async function showMsg() {
 	let message = `京东账号${$.index} ${$.nickName || $.UserName}\n🎉 本次申请：${$.totalTry}/${$.totalGoods}个商品🛒\n🎉 ${$.successList.length}个商品待领取🤩\n🎉 结束原因：${$.stopMsg}`
-	if (!jdNotify || jdNotify === 'false') {
+	if (!args.jdNotify || args.jdNotify === 'false') {
 		$.msg($.name, ``, message, {
 			"open-url": 'https://try.m.jd.com/user'
 		})
-		if($.isNode()){
-			await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, message)
-		}
+		await $.notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, message)
 	} else {
 		console.log(message)
 	}
@@ -451,7 +443,7 @@ function taskurl(url, goodId) {
 		'headers': {
 			'Host': 'try.m.jd.com',
 			'Accept-Encoding': 'gzip, deflate, br',
-			'Cookie': cookie,
+			'Cookie': $.cookie,
 			'Connection': 'keep-alive',
 			'Accept': '*/*',
 			'UserAgent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
@@ -461,7 +453,7 @@ function taskurl(url, goodId) {
 	}
 }
 
-function TotalBean() {
+function totalBean() {
 	return new Promise(async resolve => {
 		const options = {
 			"url": `https://wq.jd.com/user/info/QueryJDUserInfo?sceneval=2`,
@@ -471,7 +463,7 @@ function TotalBean() {
 				"Accept-Encoding": "gzip, deflate, br",
 				"Accept-Language": "zh-cn",
 				"Connection": "keep-alive",
-				"Cookie": cookie,
+				"Cookie": $.cookie,
 				"Referer": "https://wqs.jd.com/my/jingdou/my.shtml?sceneval=2",
 				"User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1")
 			},
@@ -489,7 +481,11 @@ function TotalBean() {
 							$.isLogin = false; //cookie过期
 							return
 						}
-						$.nickName = (data['base'] && data['base'].nickname) || $.UserName;
+						if (data['retcode'] === 0) {
+							$.nickName = (data['base'] && data['base'].nickname) || $.UserName;
+						} else {
+							$.nickName = $.UserName
+						}
 					} else {
 						console.log(`京东服务器返回空数据`)
 					}
